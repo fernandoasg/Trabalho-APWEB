@@ -32,6 +32,7 @@ https://laravel.com/docs/6.x
 **Comandos**
 
 Quando clonar: 
+     
      composer install
      
      npm install
