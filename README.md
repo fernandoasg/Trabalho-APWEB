@@ -33,7 +33,9 @@ https://laravel.com/docs/6.x
 
 Quando clonar: 
      composer install
+     
      npm install
+     
      cp .env.example .env
 
 php artisan serve
