@@ -31,4 +31,6 @@ class CreatePessoaTable extends Migration
     {
         Schema::dropIfExists('pessoa');
     }
+
+
 }
