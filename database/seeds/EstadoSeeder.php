@@ -11,7 +11,7 @@ class EstadoSeeder extends Seeder
      */
     public function run()
     {
-        DB::insert("INSERT INTO estado (id, nome, uf) VALUES
+        DB::insert("INSERT INTO estados (id, nome, uf) VALUES
         (1, 'Acre', 'AC'),
         (2, 'Alagoas', 'AL'),
         (3, 'Amazonas', 'AM'),

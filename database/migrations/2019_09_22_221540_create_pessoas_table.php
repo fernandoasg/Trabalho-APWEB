@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePessoaTable extends Migration
+class CreatePessoasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,16 @@ class CreatePessoaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa', function (Blueprint $table) {
+        Schema::create('pessoas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome_completo');
             $table->char('sexo');
+            $table->date('data_nascimento');
+            $table->string('curso')->nullable();
+
+            // FK User, nem todos os usuários tem uma pessoa e nem toda pessoa tem um usuário
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->index('user_id');
             $table->timestamps();
         });
 

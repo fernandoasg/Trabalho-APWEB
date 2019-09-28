@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCidadeTable extends Migration
+class CreatePapeisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateCidadeTable extends Migration
      */
     public function up()
     {
-        Schema::create('cidade', function (Blueprint $table) {
+        Schema::create('papeis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->integer('fk_estado');
-        });
+            $table->string('funcao');
+            $table->text('descricao');
+            $table->date('data_inicio');
+            $table->date('data_fim')->nullable();
 
-        Artisan::call('db:seed', array('--class' => 'CidadeSeeder'));
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +31,6 @@ class CreateCidadeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cidade');
+        Schema::dropIfExists('papel');
     }
 }

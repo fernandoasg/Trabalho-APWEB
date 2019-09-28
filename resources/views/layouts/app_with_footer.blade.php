@@ -11,20 +11,21 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @stack('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    @stack('fonts')
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('styles')
 
     <style>
         /* Footer */
-        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
         section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         #footer {
@@ -74,9 +75,9 @@
 
         #footer ul.quick-links li {
             padding: 3px 0;
-            -webkit-transition: .5s all ease;
-            -moz-transition: .5s all ease;
-            transition: .5s all ease;
+            -webkit-transition: .3s all ease;
+            -moz-transition: .3s all ease;
+            transition: .3s all ease;
         }
 
         #footer ul.quick-links li:hover {
@@ -101,11 +102,9 @@
                 margin-bottom: 10px;
             }
         }
-
         /* /footer */
 
         /* navbar */
-
         #navbar {
             background-color: #007b5e;
         }
@@ -118,6 +117,40 @@
             color: black !important;
         }
 
+        @media only screen and (min-width: 1100px) {
+            .center-link {
+                display: inline-block;
+                vertical-align: middle;
+                -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+                box-shadow: 0 0 1px transparent;
+                position: relative;
+                overflow: hidden;
+                margin: 0 5px;
+            }
+
+            .center-link:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 50%;
+                right: 50%;
+                bottom: 0;
+                background: white;
+                height: 2px;
+                -webkit-transition-property: left, right;
+                transition-property: left, right;
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+                -webkit-transition-timing-function: ease-out;
+                transition-timing-function: ease-out;
+            }
+
+            .center-link:hover:before, .center-link:focus:before, .center-link:active:before {
+                left: 0;
+                right: 0;
+            }
+        }
         /* /navbar */
     </style>
 </head>
@@ -136,21 +169,26 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto col-xs-12 col-sm-6 offset-sm-3 col-md-6 offset-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre Nós</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Projetos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Formas de Ingresso</a>
-                    </li>
-                </ul>
-
+                    <ul class="navbar-nav mr-auto col-xs-12 col-sm-6 offset-sm-2 col-md-6 offset-md-2">
+                        <li class="nav-item center-link">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item center-link">
+                            <a class="nav-link" href="#">Sigfap</a>
+                        </li>
+                        <li class="nav-item center-link">
+                            <a class="nav-link" href="#">Redmine</a>
+                        </li>
+                        <li class="nav-item center-link">
+                            <a class="nav-link" href="#">Projetos</a>
+                        </li>
+                        <li class="nav-item center-link">
+                            <a class="nav-link" href="#">Sobre Nós</a>
+                        </li>
+                        <li class="nav-item center-link">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                    </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -161,7 +199,7 @@
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">Cadastre-se</a>
                             </li>
                         @endif
                     @else
@@ -169,16 +207,19 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                Olá, {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                <a href="{{ route('profile.index') }}" class="dropdown-item">Meu Perfil</a>
+
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
                                     @csrf
@@ -211,11 +252,11 @@
                     <div class="col-xs-12 col-sm-4 col-md-4">
                         <h5>Nossos Parceiros</h5>
                         <ul class="list-unstyled quick-links">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>JERA</a></li>
                             <li><a href="#"><i class="fa fa-angle-double-right"></i>UFMS</a></li>
                             <li><a href="#"><i class="fa fa-angle-double-right"></i>FACOM</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Jera</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Skill RH</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Oracle</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>SIGFAP</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>REDMINE</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4">
@@ -230,7 +271,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-3">
                         <ul class="list-unstyled list-inline social text-center">
                             <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>

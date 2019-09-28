@@ -12,5 +12,7 @@
 */
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::redirect('/', '/home');
+Route::view('/home', 'home')->name('home');
+
+Route::resource('profile', 'Profile\\ProfileController');

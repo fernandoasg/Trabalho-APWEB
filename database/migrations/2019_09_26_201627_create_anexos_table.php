@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstadoTable extends Migration
+class CreateAnexosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateEstadoTable extends Migration
      */
     public function up()
     {
-        Schema::create('estado', function (Blueprint $table) {
+        Schema::create('anexos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('uf');
+            $table->string('file_path');
+            $table->string('mime_type');
+            $table->integer('file_size')->nullable();
+            $table->timestamps();
         });
-
-        Artisan::call('db:seed', array('--class' => 'EstadoSeeder'));
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateEstadoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estado');
+        Schema::dropIfExists('anexo');
     }
 }

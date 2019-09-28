@@ -11,7 +11,7 @@ class CidadeSeeder extends Seeder
      */
     public function run()
     {
-        DB::insert("INSERT INTO cidade (id, nome, fk_estado) VALUES
+        DB::insert("INSERT INTO cidades (id, nome, fk_estado) VALUES
 (1, 'Afonso Cláudio', 8),
 (2, 'Água Doce do Norte', 8),
 (3, 'Águia Branca', 8),
