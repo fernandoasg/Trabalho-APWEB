@@ -1,0 +1,11 @@
+body{
+    background-color: #eaeaea !important;
+}
+
+#profile-intro img {
+    height: 150px;
+}
+
+#profile-pessoa ul {
+    list-style-type: none;
+}
