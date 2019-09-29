@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
 
+    public $timestamps = false;
+
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Role::class);
     }
 
 }

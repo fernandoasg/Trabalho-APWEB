@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionsTable extends Migration
+class CreateMembroPapelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreatePermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('membro_papel', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('role');
-            $table->string('description')->nullable();
+
+            $table->unsignedBigInteger('papel_id');
+            $table->index('papel_id');
+
+            $table->unsignedBigInteger('membro_id');
+            $table->index('membro_id');
         });
-
-        Artisan::call('db:seed', array('--class' => 'PermissionSeeder'));
-
     }
 
     /**
@@ -30,6 +31,6 @@ class CreatePermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('membro_papel');
     }
 }

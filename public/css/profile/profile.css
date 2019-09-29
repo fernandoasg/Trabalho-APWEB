@@ -2,10 +2,19 @@ body{
     background-color: #eaeaea !important;
 }
 
+
 #profile-intro img {
     height: 150px;
 }
 
 #profile-pessoa ul {
     list-style-type: none;
+}
+
+#profile-pessoa i {
+    margin-right: 7px;
+}
+
+#profile-projetos img {
+    max-width: 400px;
 }

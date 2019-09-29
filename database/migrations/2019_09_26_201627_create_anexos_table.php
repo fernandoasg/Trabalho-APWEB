@@ -29,6 +29,6 @@ class CreateAnexosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anexo');
+        Schema::dropIfExists('anexos');
     }
 }

@@ -15,10 +15,15 @@ class CreateMembrosTable extends Migration
     {
         Schema::create('membros', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->date('data_entrada');
-            $table->date('data_saida')->nullable();
-            $table->text('observacao')->nullable();
-            $table->timestamps();
+            $table->date('data_saida');
+
+            $table->unsignedBigInteger('projeto_id');
+            $table->index('projeto_id');
+
+            $table->unsignedBigInteger('pessoa_id');
+            $table->index('pessoa_id');
         });
     }
 
@@ -29,6 +34,6 @@ class CreateMembrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membro');
+        Schema::dropIfExists('membros');
     }
 }

@@ -19,7 +19,6 @@ class CreateEstadosTable extends Migration
             $table->string('uf');
         });
 
-        Artisan::call('db:seed', array('--class' => 'EstadoSeeder'));
     }
 
     /**

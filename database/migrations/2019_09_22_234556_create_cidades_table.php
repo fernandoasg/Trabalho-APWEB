@@ -16,10 +16,10 @@ class CreateCidadesTable extends Migration
         Schema::create('cidades', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
-            $table->integer('fk_estado');
+            $table->integer('id_estado');
         });
 
-        Artisan::call('db:seed', array('--class' => 'CidadeSeeder'));
+
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateCidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cidade');
+        Schema::dropIfExists('cidades');
     }
 }

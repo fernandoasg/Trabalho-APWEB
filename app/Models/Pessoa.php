@@ -2,12 +2,26 @@
 
 namespace App\Models;
 
+use App\Models\Endereco\Endereco;
+use App\Models\Projeto\Membro;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
+    }
+
+    public function endereco(){
+        return $this->hasOne(Endereco::class);
+    }
+
+    /**
+     * Pega todos os registros onde a pessoa é membro
+     */
+    public function membros(){
+        return $this->hasMany(Membro::class);
     }
 }

@@ -16,6 +16,7 @@ class CreateProjetosTable extends Migration
         Schema::create('projetos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
+            $table->text('descricao');
             $table->date('data_inicio');
             $table->date('data_fim')->nullable();
             $table->timestamps();
@@ -29,6 +30,6 @@ class CreateProjetosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projeto');
+        Schema::dropIfExists('projetos');
     }
 }

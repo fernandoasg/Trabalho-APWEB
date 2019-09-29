@@ -19,8 +19,6 @@ class CreatePapeisTable extends Migration
             $table->text('descricao');
             $table->date('data_inicio');
             $table->date('data_fim')->nullable();
-
-            $table->timestamps();
         });
     }
 
@@ -31,6 +29,6 @@ class CreatePapeisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('papel');
+        Schema::dropIfExists('papeis');
     }
 }

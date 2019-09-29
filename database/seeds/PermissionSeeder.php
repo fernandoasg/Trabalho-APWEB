@@ -1,5 +1,6 @@
 <?php
 
+use App\Permission;
 use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
@@ -11,10 +12,36 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        DB::insert("INSERT INTO permissions (role, description) VALUES
-        ('Usuário Comum', 'usuário comum, não tem permissões especiais'),
-        ('Editor', 'usuário editor, pode editar, criar e remover notícias'),
-        ('Administrador', 'usuário administrador, pode fazer as funções de editor, criar, alterar e remover usuários, além de conceder permissões de ADM para outros usuários');
-        ");
+
+        $permission = new Permission();
+        $permission->name = 'Criar Noticia';
+        $permission->label = 'create-noticia';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->name = 'Atualizar Noticia';
+        $permission->label = 'update-noticia';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->name = 'Deletar Noticia';
+        $permission->label = 'delete-noticia';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->name = 'Criar User';
+        $permission->label = 'create-user';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->name = 'Alterar User';
+        $permission->label = 'update-user';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->name = 'Deletar User';
+        $permission->label = 'delete-user';
+        $permission->save();
+
     }
 }
