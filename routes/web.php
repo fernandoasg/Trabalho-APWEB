@@ -15,6 +15,9 @@ Auth::routes();
 Route::redirect('/', '/home');
 Route::view('/home', 'home')->name('home');
 
+//Rota reservada para ajax, retorna as cidades de acordo com o estado enviado
+Route::post('/ajax_cidade','AjaxController@getCidades');
+
 /*
  *  | Mostrar perfil usuário logado        | GET|HEAD                               | profile                    | profile.index    | App\Http\Controllers\Profile\ProfileController@index                   | web                                             |
  *  | Mostrar perfil usuário logado        | POST                                   | profile                    | profile.store    | App\Http\Controllers\Profile\ProfileController@store                   | web                                             |

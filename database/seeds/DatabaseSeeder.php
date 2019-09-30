@@ -30,9 +30,11 @@ class DatabaseSeeder extends Seeder
 //        Artisan::call('db:seed', array('--class' => 'RolesPermissionsSeeder'));
 
         DB::insert("INSERT INTO membro_papel (papel_id, membro_id) VALUES
-        (1,1),
-        (2,2),
-        (3,3);");
+                                                      (1,1),
+                                                      (2,1),
+                                                      (3,2),
+                                                      (4,3),
+                                                      (5,4);");
 
     }
 }

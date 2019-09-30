@@ -14,8 +14,4 @@ class Papel extends Model
         return $this->belongsToMany(Membro::class);
     }
 
-    public function projeto(){
-        return $this->belongsToMany(Projeto::class);
-    }
-
 }

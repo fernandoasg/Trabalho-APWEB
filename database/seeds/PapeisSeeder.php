@@ -20,6 +20,20 @@ class PapeisSeeder extends Seeder
         $papel->save();
 
         $papel = new Papel();
+        $papel->funcao = 'Supervisor BOSS';
+        $papel->descricao = 'Supervisor geral e SCRUM Master, função principal é supervisionar a execução das atividades e garantir o uso de padrões de projeto/qualidade';
+        $papel->data_inicio = '2018-07-02';
+        $papel->data_fim = '2018-09-01';
+        $papel->save();
+
+        $papel = new Papel();
+        $papel->funcao = 'Supervisor ULTRA';
+        $papel->descricao = 'Supervisor geral e SCRUM Master, função principal é supervisionar a execução das atividades e garantir o uso de padrões de projeto/qualidade';
+        $papel->data_inicio = '2018-09-02';
+        $papel->data_fim = '2018-12-01';
+        $papel->save();
+
+        $papel = new Papel();
         $papel->funcao = 'Programador';
         $papel->descricao = 'Programador blablablablablabla';
         $papel->data_inicio = '2017-01-22';

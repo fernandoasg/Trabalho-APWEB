@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
+
+    protected $fillable = [
+        'nome_completo', 'sexo', 'data_nascimento', 'user_id',
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class);

@@ -197,13 +197,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Cadastre-se</a>
-                            </li>
-                        @endif
                     @else
-
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -214,6 +208,8 @@
 
                                 <a href="{{ route('profile.index') }}" class="dropdown-item">Meu Perfil</a>
 
+                                {{--                        todo se usuário for adm mostrar dropdown de area do usuário --}}
+                                <a class="dropdown-item" href="{{ route('register') }}">Area do administrador</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

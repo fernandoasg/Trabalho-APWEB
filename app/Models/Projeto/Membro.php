@@ -22,4 +22,11 @@ class Membro extends Model
         return $this->belongsTo(Projeto::class);
     }
 
+    /**
+     * Os vários papeis de um Membro
+     */
+    public function papeis(){
+        return $this->belongsToMany(Papel::class);
+    }
+
 }

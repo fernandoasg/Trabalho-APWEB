@@ -27,6 +27,7 @@
             </div>
             <hr>
 
+
             {{--        SE NAO ENCONTRAR PESSOA P/ USUARIO MOSTRAR IMG DE DADOS NAO PREENCHIDOS                                 --}}
             @if(isset(Auth::user()->pessoa))
                 <div id="profile-pessoa" class="">
@@ -57,13 +58,22 @@
                             <img src="{{ asset('/images/profile/no-img.png') }}" alt="">
                             <div>
                                 <ul class="align-self-center">
-                                    <li><h3>{{ $projeto->nome }}</h3></li>
-                                    <li>
-                                        <span>Analista de Requisitos</span>
-                                    </li>
-                                    <li>
-                                        <span>23/10/2018 Até o Momento</span>
-                                    </li>
+                                    <li><h3>{{ $projeto['nome'] }}</h3></li>
+
+                                    @if(isset($projeto['papeis']))
+
+                                        @foreach($projeto['papeis'] as $papel)
+                                            <li>
+                                                <span>{{ $papel['funcao'] }}</span>
+                                            </li>
+                                            <li>
+                                                <span>{{ $papel['data_inicio'] }} Até {{ $papel['data_fim'] }}</span>
+                                            </li>
+                                            <hr>
+                                        @endforeach
+
+                                    @endif
+
                                 </ul>
                             </div>
                         </div>
