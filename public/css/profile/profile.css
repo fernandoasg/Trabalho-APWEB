@@ -2,19 +2,35 @@ body{
     background-color: #eaeaea !important;
 }
 
+ul {
+    list-style-type: none;
+}
+
 #profile-intro img {
     height: 150px;
 }
 
-#profile-pessoa ul, #profile-projetos ul {
-    list-style-type: none;
+#profile-intro i, #profile-pessoa i {
+    margin: 5px;
 }
 
-#profile-pessoa i {
+#profile-intro i {
+    font-size: 1.3em;
+}
+
+.profile-pessoa i {
     margin-right: 7px;
 }
 
-#profile-projetos img {
-    max-width: 400px;
-    height: 100%;
+#profile-projeto img {
+    height: 200px;
+}
+@media only screen and (max-width: 460px) {
+    #profile-projeto img {
+        height: 150px;
+    }
+}
+
+#papel {
+    margin-top: 10px;
 }

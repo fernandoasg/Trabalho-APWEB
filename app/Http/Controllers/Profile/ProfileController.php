@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['edit', 'index']);
+    }
+
     /**
      * Retorna os dados para a view das profiles de acordo com o usuário
      * rota: profile/        requer o usuário logado
@@ -26,46 +31,56 @@ class ProfileController extends Controller
      */
     public function getProfileViewData($id)
     {
-        $user = '';
 
-        // Se a funcão é que chamou esse método é a index o usuário é o logado
-        if (debug_backtrace()[1]['function'] == 'index'){
-            $user = Auth::user();
-        }
-        // Caso contrário busque pelo id do request
-        else {
-            $user = User::find($id);
-        }
+        // Se a funcão é que chamou esse método é a index o usuário é o logado, caso contrário busque pelo id do url
+        $user = (debug_backtrace()[1]['function'] == 'index') ? $user = Auth::user() : $user = User::find($id);
+
+        if (!isset($user))
+            abort(404);
 
         $projetos = [];
 
-        foreach ($user->pessoa->membros as $membro) {
-            $projeto = Projeto::find($membro['projeto_id']);
-            $projeto->{"papeis"} = $membro->papeis;
-            array_push($projetos, $projeto);
+        if (isset($user->pessoa->membros)) {
+            foreach ($user->pessoa->membros as $membro) {
+                $projeto = Projeto::find($membro['projeto_id']);
+                $projeto->{"papeis"} = $membro->papeis;
+                array_push($projetos, $projeto);
+            }
+        } else {
+            $projetos = null;
         }
 
-        $estado = '';
-        $cidade = '';
-        if (isset($user->pessoa->endereco)) {
-            $cidade = Cidade::find($user->pessoa->endereco->cidade_id)->nome;
-            $estado = Estado::find($user->pessoa->endereco->estado_id)->uf;
+        if (isset($user->pessoa)) {
+            $dados_pessoa['nome'] = (isset($user->pessoa->nome_completo) ? $user->pessoa->nome_completo : '');
+            $dados_pessoa['curso'] = (isset($user->pessoa->curso) ? $user->pessoa->curso : 'Curso não informado');
+            $dados_pessoa['telefone'] = (isset($user->pessoa->telefone) ? $user->pessoa->telefone : 'Telefone não informado');
+            $dados_pessoa['data_nascimento'] = (isset($user->pessoa->data_nascimento) ? $user->pessoa->data_nascimento : '');
+            str_replace('-', '/', date("m-d-Y", strtotime($dados_pessoa['data_nascimento'])));
+
+            if (isset($user->pessoa->endereco)){
+                $dados_pessoa['cidade'] = Cidade::find($user->pessoa->endereco->cidade_id)->nome;
+                $dados_pessoa['estado'] = Estado::find($user->pessoa->endereco->estado_id)->uf;
+            } else {
+                $dados_pessoa['cidade'] = 'Endereço não informado';
+                $dados_pessoa['estado'] = '';
+            }
+
+        } else {
+            $dados_pessoa = null;
         }
 
         $view_data = [
-            'username' => $user->name,
-            'email' => $user->email,
 
-            'nome' => $user->pessoa->nome_completo,
-            'curso' => $user->pessoa->curso,
-            'telefone' => $user->pessoa->telefone,
-            'cidade' => $cidade,
-            'estado' => $estado,
-            'data_nascimento' => str_replace('-', '/', date("m-d-Y", strtotime($user->pessoa->data_nascimento))),
+            'usuario' => [
+                'id' => $user->id,
+                'username' => $user->name,
+                'email' => $user->email,
+            ],
+
+            'pessoa' => $dados_pessoa,
 
             'projetos' => $projetos
         ];
-
         return $view_data;
     }
 
@@ -76,7 +91,6 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $this->middleware('auth');
         $view_data = $this->getProfileViewData(null);
         return view('profile/profile')->with(compact('view_data'));
     }
@@ -124,7 +138,10 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (Auth::user()->id != $id)
+            abort(401);
+        $estados = Estado::orderBy('nome', 'ASC')->get();
+        return view('profile.profile_edit')->with(compact('estados'));
     }
 
     /**

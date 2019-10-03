@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AjaxController extends Controller
 {
@@ -14,28 +15,20 @@ class AjaxController extends Controller
     public function getCidades(Request $request){
         {
 
-            // O campo a ser usado como chave
-            $select = $request->get('select');
-
             // O valor delimitador
             $value = $request->get('value');
 
-            // ???
-            $dependent = $request->get('dependent');
-
             $data = DB::table('cidades')
-                ->where($select, $value)
-                ->groupBy($dependent)
+                ->where('id_estado', $value)
+                ->orderBy('nome')
                 ->get();
 
-            $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+            $output = '';
 
             foreach($data as $row)
             {
-                $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+                $output .= '<option value="'.$row->id.'">'.$row->nome.'</option>';
             }
-
-            dd($output);
             echo $output;
         }
     }

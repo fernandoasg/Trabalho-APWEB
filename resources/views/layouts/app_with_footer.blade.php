@@ -102,6 +102,7 @@
                 margin-bottom: 10px;
             }
         }
+
         /* /footer */
 
         /* navbar */
@@ -151,6 +152,7 @@
                 right: 0;
             }
         }
+
         /* /navbar */
     </style>
 </head>
@@ -169,26 +171,26 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto col-xs-12 col-sm-6 offset-sm-2 col-md-6 offset-md-2">
-                        <li class="nav-item center-link">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item center-link">
-                            <a class="nav-link" href="#">Sigfap</a>
-                        </li>
-                        <li class="nav-item center-link">
-                            <a class="nav-link" href="#">Redmine</a>
-                        </li>
-                        <li class="nav-item center-link">
-                            <a class="nav-link" href="#">Projetos</a>
-                        </li>
-                        <li class="nav-item center-link">
-                            <a class="nav-link" href="#">Sobre Nós</a>
-                        </li>
-                        <li class="nav-item center-link">
-                            <a class="nav-link" href="#">Contato</a>
-                        </li>
-                    </ul>
+                <ul class="navbar-nav mr-auto col-xs-12 col-sm-6 offset-sm-2 col-md-6 offset-md-2">
+                    <li class="nav-item center-link">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item center-link">
+                        <a class="nav-link" href="#">Sigfap</a>
+                    </li>
+                    <li class="nav-item center-link">
+                        <a class="nav-link" href="#">Redmine</a>
+                    </li>
+                    <li class="nav-item center-link">
+                        <a class="nav-link" href="#">Projetos</a>
+                    </li>
+                    <li class="nav-item center-link">
+                        <a class="nav-link" href="#">Sobre</a>
+                    </li>
+                    <li class="nav-item center-link">
+                        <a class="nav-link" href="#">Contato</a>
+                    </li>
+                </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -242,7 +244,7 @@
                             <li><a href="#"><i class="fa fa-angle-double-right"></i>Sobre</a></li>
                             <li><a href="#"><i class="fa fa-angle-double-right"></i>Trabalhe Conosco</a></li>
                             <li><a href="#"><i class="fa fa-angle-double-right"></i>Perguntas Frequentes</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Area do Administrador</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Área do Administrador</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4">
