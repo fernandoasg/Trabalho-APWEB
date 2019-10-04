@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'pessoa_id' => DB::table('pessoas')->max('id')
+//            'pessoa_id' => DB::table('pessoas')->max('id')
         ]);
     }
 }

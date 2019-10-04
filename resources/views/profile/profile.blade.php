@@ -8,24 +8,25 @@
     <div class="container d-flex justify-content-center">
         <div class=" col-lg-8 col-md-10 col-sm-12 m-sm-0 bg-white p-3" id="#profile-container">
             <div class="d-flex flex-wrap" id="profile-intro">
-                    <img src="{{ asset('/images/profile/profile_pic_not_avaliable.jpg') }}" alt="Profile Pic"
-                         class="rounded-circle mr-3">
+                <img src="{{ asset('/images/profile/profile_pic_not_avaliable.jpg') }}" alt="Profile Pic"
+                     class="rounded-circle mr-3">
                 <div class="">
                     <h1 class="mt-2">{{ $view_data['usuario']['username'] }}</h1>
                     <ul class="p-0">
                         <li>
-                            <i class="fas fa-envelope fa-fw"></i><span
-                                class="">{{ $view_data['usuario']['email'] }}</span>
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <span>{{ $view_data['usuario']['email'] }}</span>
                         </li>
                         <li>
-                            <i class="fas fa-user-tag fa-fw"></i><span>Administrador</span>
+                            <i class="fas fa-user-tag fa-fw"></i>
+                            <span>Administrador</span>
                         </li>
                         <li>
-                            <i class="fas fa-graduation-cap fa-fw"></i><!--
+                            <i class="fas fa-graduation-cap fa-fw"></i>
                             @if(empty($view_data['pessoa']['curso']))
-                            !--><span>Curso não informado</span><!--
+                                <span>Curso não informado</span>
                             @else
-                            !--><span>{{$view_data['pessoa']['curso']}}</span>
+                                <span>{{$view_data['pessoa']['curso']}}</span>
                             @endif
                         </li>
                     </ul>
@@ -50,10 +51,11 @@
                         <li><i class="fas fa-phone fa-fw"></i>{{ $view_data['pessoa']['telefone'] }}</li>
                         <li><i class="fas fa-birthday-cake fa-fw"></i>{{ $view_data['pessoa']['data_nascimento'] }}</li>
                     </ul>
+                @else
+                    <p>O usuário não tem dados informados</p>
+                @endif
             </div>
-            @else
-                <p>O usuário não tem dados informados</p>
-            @endif
+
             <hr>
 
             {{--            LOOP AQUI - IF PROJETOS VAZIOS MOSTRAR IMG DE SEM PROJETOS--}}
@@ -91,11 +93,10 @@
                         </div>
                         <hr>
                     @endforeach
+                @else
+                    <p>O usuário não é membro de nenhum projeto</p>
+                @endif
             </div>
-
-            @else
-                <p>O usuário não é membro de nenhum projeto</p>
-            @endif
         </div>
     </div>
 @endsection

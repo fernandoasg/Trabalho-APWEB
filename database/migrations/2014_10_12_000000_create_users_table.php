@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
              * 2 = Editor
              * 3 = Administrador
              */
-            $table->unsignedBigInteger('role_id')->default(1);
-            $table->index('role_id');
+//            $table->unsignedBigInteger('role_id')->default(1);
+//            $table->index('role_id');
 
             // FK Pessoa, nem todos os usuários tem uma pessoa e nem toda pessoa tem um usuário
             $table->unsignedBigInteger('pessoa_id')->nullable();

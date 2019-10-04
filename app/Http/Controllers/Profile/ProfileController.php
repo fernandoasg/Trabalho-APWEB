@@ -26,7 +26,7 @@ class ProfileController extends Controller
      * Retorna os dados para a view das profiles de acordo com o usuário
      * rota: profile/        requer o usuário logado
      * rota: profile/{id}    requer o usuário com tal id
-     * @param $id o id do usuário a ser buscado
+     * @param $id o id do usuário a ser buscado, null se é o logado
      * @return array
      */
     public function getProfileViewData($id)
@@ -46,18 +46,19 @@ class ProfileController extends Controller
                 $projeto->{"papeis"} = $membro->papeis;
                 array_push($projetos, $projeto);
             }
-        } else {
+        } else
             $projetos = null;
-        }
+
 
         if (isset($user->pessoa)) {
             $dados_pessoa['nome'] = (isset($user->pessoa->nome_completo) ? $user->pessoa->nome_completo : '');
             $dados_pessoa['curso'] = (isset($user->pessoa->curso) ? $user->pessoa->curso : 'Curso não informado');
             $dados_pessoa['telefone'] = (isset($user->pessoa->telefone) ? $user->pessoa->telefone : 'Telefone não informado');
             $dados_pessoa['data_nascimento'] = (isset($user->pessoa->data_nascimento) ? $user->pessoa->data_nascimento : '');
+            $dados_pessoa['sexo'] = (isset($user->pessoa->sexo) ? trim($user->pessoa->sexo) : '');
             str_replace('-', '/', date("m-d-Y", strtotime($dados_pessoa['data_nascimento'])));
 
-            if (isset($user->pessoa->endereco)){
+            if (isset($user->pessoa->endereco)) {
                 $dados_pessoa['cidade'] = Cidade::find($user->pessoa->endereco->cidade_id)->nome;
                 $dados_pessoa['estado'] = Estado::find($user->pessoa->endereco->estado_id)->uf;
             } else {
@@ -65,20 +66,17 @@ class ProfileController extends Controller
                 $dados_pessoa['estado'] = '';
             }
 
-        } else {
+        } else
             $dados_pessoa = null;
-        }
+
 
         $view_data = [
-
             'usuario' => [
                 'id' => $user->id,
                 'username' => $user->name,
                 'email' => $user->email,
             ],
-
             'pessoa' => $dados_pessoa,
-
             'projetos' => $projetos
         ];
         return $view_data;
@@ -125,7 +123,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param $id
      * @return \Illuminate\Http\Response
      */
 
@@ -133,33 +131,35 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         if (Auth::user()->id != $id)
             abort(401);
+
         $estados = Estado::orderBy('nome', 'ASC')->get();
-        return view('profile.profile_edit')->with(compact('estados'));
+        $view_data = $this->getProfileViewData($id);
+        return view('profile.profile_edit')->with(compact('estados', 'view_data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        dd([$request, $id]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
