@@ -16,8 +16,8 @@ Route::redirect('/', '/home');
 Route::view('/home', 'home')->name('home');
 
 // Rota reservada para ajax, retorna as cidades de acordo com o estado enviado
-Route::post('/ajax_cidades','AjaxController@getCidades');
-Route::post('/ajax_estado_cidade','AjaxController@getEstadoCidade');
+Route::post('/ajax_cidades','Endereco\AjaxController@getCidades');
+Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
 
 /*
  *  | Mostrar perfil usuário logado        | GET|HEAD                               | profile                    | profile.index    | App\Http\Controllers\Profile\ProfileController@index                   | web                                             |

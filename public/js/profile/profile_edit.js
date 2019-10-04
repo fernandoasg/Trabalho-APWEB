@@ -3,10 +3,11 @@
  * @param cidade_id - Valor default a ser selecionado após a operação
  */
 function getcidades(cidade_id) {
-    if ($('#estado').val() !== '') {
-        let select = $('#estado').attr("id");
-        let value = $('#estado').val();
-        let dependent = $('#estado').data('dependent');
+    let estado_select_box = $("#estado");
+    if (estado_select_box.val() !== '') {
+        let select = estado_select_box.attr("id");
+        let value = estado_select_box.val();
+        let dependent = estado_select_box.data('dependent');
         let _token = $('input[name="_token"]').val();
         $.ajax({
             url: "/ajax_cidades",
@@ -15,7 +16,7 @@ function getcidades(cidade_id) {
             success: function (result) {
                 $('#' + dependent).html(result);
                 if (cidade_id != null)
-                    $('#cidade').val(cidade_id);
+                    $("#cidade").val(cidade_id);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(JSON.stringify(jqXHR));
@@ -26,6 +27,10 @@ function getcidades(cidade_id) {
 }
 
 $(document).ready(function () {
+
+    $('#estado').val(estado_id);
+
+    getcidades(cidade_id);
 
     // Quando o usuário selecionar um estado, mostre as cidades de tal no select de cidades
     $('#estado').change(function () {

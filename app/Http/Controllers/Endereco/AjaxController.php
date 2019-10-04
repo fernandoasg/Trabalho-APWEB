@@ -14,16 +14,12 @@ class AjaxController extends Controller
      */
     public function getCidades(Request $request)
     {
-        // O valor delimitador
-        $value = $request->get('value');
-
         $data = DB::table('cidades')
-            ->where('id_estado', $value)
+            ->where('id_estado', $request->get('value'))
             ->orderBy('nome')
             ->get();
 
         $output = '';
-
         foreach ($data as $row) {
             $output .= '<option value="' . $row->id . '">' . $row->nome . '</option>';
         }
@@ -49,6 +45,8 @@ class AjaxController extends Controller
             ->where('id_estado', '=', $uf_id)
             ->where('nome', 'like', '%'. $request->get('cidade') . '%')
             ->get('id');
+
+        // Só retorna uma cidade
         foreach ($data as $cidade)
             $cidade_id = $cidade->id;
 
