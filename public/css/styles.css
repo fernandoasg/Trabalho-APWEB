@@ -1,0 +1,16 @@
+
+.news-info{
+     position: absolute;
+     bottom: 0px;
+     left: 13px;
+}
+
+.news-info-mid{
+     position: absolute;
+     bottom: 50%;
+     left: 13px;
+}
+
+.zindex-1{
+     z-index: 1;
+}
