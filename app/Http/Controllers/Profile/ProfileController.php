@@ -131,7 +131,6 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
     /**
      * Show the form for editing the specified resource.
      *
