@@ -3,18 +3,27 @@
  * @param cidade_id - Valor default a ser selecionado após a operação
  */
 function getcidades(cidade_id) {
+
     let estado_select_box = $("#estado");
+
     if (estado_select_box.val() !== '') {
+
         let select = estado_select_box.attr("id");
         let value = estado_select_box.val();
+
+        // Campos dependentes do #estado, no nosso caso o select de cidades
         let dependent = estado_select_box.data('dependent');
+
+        // Token CSRF Laravel
         let _token = $('input[name="_token"]').val();
+
         $.ajax({
             url: "/ajax_cidades",
             method: "POST",
             data: {select: select, value: value, _token: _token, dependent: dependent},
             success: function (result) {
                 $('#' + dependent).html(result);
+
                 if (cidade_id != null)
                     $("#cidade").val(cidade_id);
             },
