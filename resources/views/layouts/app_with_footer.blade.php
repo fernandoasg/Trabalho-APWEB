@@ -183,7 +183,7 @@
                         <a class="nav-link" href="#">Redmine</a>
                     </li>
                     <li class="nav-item center-link">
-                        <a class="nav-link" href="#">Projetos</a>
+                        <a class="nav-link" href="/projetos">Projetos</a>
                     </li>
                     <li class="nav-item center-link">
                         <a class="nav-link" href="#">Sobre</a>

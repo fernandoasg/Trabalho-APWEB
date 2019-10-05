@@ -19,6 +19,13 @@ Route::view('/home', 'home')->name('home');
 Route::post('/ajax_cidades','Endereco\AjaxController@getCidades');
 Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
 
+
+// Rotas do ProjetosController
+Route::get('/projetos', 'ProjetosController@index');
+Route::get('/projetos/sigfap', 'ProjetosController@sigfap');
+Route::get('/projetos/siai', 'ProjetosController@siai');
+Route::get('/projetos/ledes', 'ProjetosController@ledes');
+
 /*
  *  | Mostrar perfil usuário logado        | GET|HEAD                               | profile                    | profile.index    | App\Http\Controllers\Profile\ProfileController@index                   | web                                             |
  *  | Armazena perfil do usuário           | POST                                   | profile                    | profile.store    | App\Http\Controllers\Profile\ProfileController@store                   | web                                             |
