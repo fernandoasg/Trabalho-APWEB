@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 
     <!-- Fonts -->
@@ -19,143 +19,11 @@
     @stack('fonts')
 
     <!-- Styles -->
+    <link href="{{ asset('css/layouts/app_with_footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     @stack('styles')
 
-    <style>
-        /* Footer */
-        section {
-            padding: 40px 0;
-        }
-
-        #footer {
-            background: #007b5e !important;
-        }
-
-        #footer h5 {
-            padding-left: 10px;
-            border-left: 3px solid #eeeeee;
-            padding-bottom: 6px;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        #footer a {
-            color: #ffffff;
-            text-decoration: none !important;
-            background-color: transparent;
-            -webkit-text-decoration-skip: objects;
-        }
-
-        #footer ul.social li {
-            padding: 3px 0;
-        }
-
-        #footer ul.social li a i {
-            margin-right: 5px;
-            font-size: 25px;
-            -webkit-transition: .5s all ease;
-            -moz-transition: .5s all ease;
-            transition: .5s all ease;
-        }
-
-        #footer ul.social li:hover a i {
-            font-size: 30px;
-            margin-top: -10px;
-        }
-
-        #footer ul.social li a,
-        #footer ul.quick-links li a {
-            color: #ffffff;
-        }
-
-        #footer ul.social li a:hover {
-            color: #eeeeee;
-        }
-
-        #footer ul.quick-links li {
-            padding: 3px 0;
-            -webkit-transition: .3s all ease;
-            -moz-transition: .3s all ease;
-            transition: .3s all ease;
-        }
-
-        #footer ul.quick-links li:hover {
-            padding: 3px 0;
-            margin-left: 5px;
-            font-weight: 700;
-        }
-
-        #footer ul.quick-links li a i {
-            margin-right: 5px;
-        }
-
-        #footer ul.quick-links li:hover a i {
-            font-weight: 700;
-        }
-
-        @media (max-width: 767px) {
-            #footer h5 {
-                padding-left: 0;
-                border-left: transparent;
-                padding-bottom: 0;
-                margin-bottom: 10px;
-            }
-        }
-
-        /* /footer */
-
-        /* navbar */
-        #navbar {
-            background-color: #007b5e;
-        }
-
-        #navbar * {
-            color: white !important;
-        }
-
-        #navbar .dropdown-item {
-            color: black !important;
-        }
-
-        @media only screen and (min-width: 1100px) {
-            .center-link {
-                display: inline-block;
-                vertical-align: middle;
-                -webkit-transform: perspective(1px) translateZ(0);
-                transform: perspective(1px) translateZ(0);
-                box-shadow: 0 0 1px transparent;
-                position: relative;
-                overflow: hidden;
-                margin: 0 5px;
-            }
-
-            .center-link:before {
-                content: "";
-                position: absolute;
-                z-index: -1;
-                left: 50%;
-                right: 50%;
-                bottom: 0;
-                background: white;
-                height: 2px;
-                -webkit-transition-property: left, right;
-                transition-property: left, right;
-                -webkit-transition-duration: 0.2s;
-                transition-duration: 0.2s;
-                -webkit-transition-timing-function: ease-out;
-                transition-timing-function: ease-out;
-            }
-
-            .center-link:hover:before, .center-link:focus:before, .center-link:active:before {
-                left: 0;
-                right: 0;
-            }
-        }
-
-        /* /navbar */
-    </style>
 </head>
 <body>
 <div id="app">
@@ -171,6 +39,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto col-xs-12 col-sm-6 offset-sm-2 col-md-6 offset-md-2">
                     <li class="nav-item center-link">
@@ -192,6 +61,7 @@
                         <a class="nav-link" href="#">Contato</a>
                     </li>
                 </ul>
+
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -212,7 +82,7 @@
                                 <a href="{{ route('profile.index') }}" class="dropdown-item">Meu Perfil</a>
 
                                 {{--                        todo se usuário for adm mostrar dropdown de area do usuário --}}
-                                <a class="dropdown-item" href="{{ route('register') }}">Area do administrador</a>
+                                <a class="dropdown-item" href="{{ route('admin_area') }}">Area do administrador</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

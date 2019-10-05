@@ -1,0 +1,4 @@
+Implementar roles e permissoes
+
+Verificar se o usuário é adm pra exibir opção de area do admin no menu da navbar
+Verificar se o usuário é adm para acessar /admin

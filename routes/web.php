@@ -30,4 +30,6 @@ Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
  *  | Rota de registro de usuers           | POST                                   | register                   |                  | App\Http\Controllers\Auth\RegisterController@register                  | web,guest                                       |
  *  | Rota para exibir form de registro    | GET|HEAD                               | register                   | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest                                       |
  */
-Route::resource('profile', 'Profile\\ProfileController');
+Route::resource('profile', 'Profile\ProfileController');
+
+Route::get('/admin', 'Admin\AdminController@index')->name('admin_area');
