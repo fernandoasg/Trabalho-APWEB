@@ -46,10 +46,15 @@
                     <ul class="pl-4">
                         <li><h3>{{ $view_data['pessoa']['nome'] }}</h3></li>
                         <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>{{ $view_data['pessoa']['cidade'] }} {{ $view_data['pessoa']['estado'] }}
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            @if(empty($view_data['pessoa']['estado']))
+                                <span>Endereço não informado</span>
+                            @else
+                                <span>{{ $view_data['pessoa']['cidade'] }}, {{ $view_data['pessoa']['estado'] }}</span>
+                            @endif
                         </li>
-                        <li><i class="fas fa-phone fa-fw"></i>{{ $view_data['pessoa']['telefone'] }}</li>
-                        <li><i class="fas fa-birthday-cake fa-fw"></i>{{ $view_data['pessoa']['data_nascimento'] }}</li>
+                        <li><i class="fas fa-phone fa-fw"></i><span>{{ $view_data['pessoa']['telefone'] }}</span></li>
+                        <li><i class="fas fa-birthday-cake fa-fw"></i><span>{{ $view_data['pessoa']['data_nascimento_dmY'] }}</span></li>
                     </ul>
                 @else
                     <p>O usuário não tem dados informados</p>

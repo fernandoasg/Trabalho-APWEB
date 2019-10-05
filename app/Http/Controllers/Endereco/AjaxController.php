@@ -21,8 +21,9 @@ class AjaxController extends Controller
             ->get();
 
         $output = '';
-        foreach ($data as $row) {
-            $output .= '<option value="' . $row->id . '">' . $row->nome . '</option>';
+
+        foreach ($data as $cidade) {
+            $output .= '<option value="' . $cidade->id . '">' . $cidade->nome . '</option>';
         }
         echo $output;
     }

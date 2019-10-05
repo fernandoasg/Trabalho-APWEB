@@ -16,6 +16,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Editar Perfil</div>
+                    <?php print_r($errors)?>
                     <div class="card-body">
                         <form method="post" action="{{ route('profile.update', Auth::user()->id) }}">
                             @csrf
@@ -215,7 +216,7 @@
                                 <div class="col-md-6">
                                     <input id="bairro" type="text"
                                            class="form-control @error('bairro') is-invalid @enderror"
-                                           name="rua" autocomplete="rua" value="{{$view_data['pessoa']['bairro']}}">
+                                           name="bairro" autocomplete="rua" value="{{$view_data['pessoa']['bairro']}}">
 
                                     @error('bairro')
                                     <span class="invalid-feedback" role="alert">
