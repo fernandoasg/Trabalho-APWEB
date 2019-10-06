@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @stack('scripts')
 
     <!-- Fonts -->
@@ -81,8 +81,9 @@
 
                                 <a href="{{ route('profile.index') }}" class="dropdown-item">Meu Perfil</a>
 
-                                {{--                        todo se usuário for adm mostrar dropdown de area do usuário --}}
-                                <a class="dropdown-item" href="{{ route('admin_area') }}">Area do administrador</a>
+                                @can('criar usuarios')
+                                    <a class="dropdown-item" href="{{ route('admin_area') }}">Area do administrador</a>
+                                @endcan
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

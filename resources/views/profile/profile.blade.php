@@ -21,8 +21,12 @@
                             <span>{{ $view_data['usuario']['email'] }}</span>
                         </li>
                         <li>
-                            <i class="fas fa-user-tag fa-fw"></i>
-                            <span>Administrador</span>
+                            <i class="fas fa-user-tag"></i>
+                            @if(!empty($view_data['usuario']['role']))
+                                <span>{{ $view_data['usuario']['role'] }}</span>
+                            @else
+                                <span>Usuário Comum</span>
+                            @endif
                         </li>
                         <li>
                             <i class="fas fa-graduation-cap fa-fw"></i>
@@ -35,8 +39,10 @@
                     </ul>
                 </div>
                 <div class="align-self-end ml-auto">
+
                     @if($view_data['usuario']['id'] == Auth::user()->id)
-                        <a href="{{ route('profile.edit', Auth::user()->id) }}" class="btn btn-primary btn-lg active "
+                        <a href="{{ route('profile.edit', Auth::user()->id) }}"
+                           class="btn btn-primary btn-lg active"
                            role="button" aria-pressed="true">Edit</a>
                     @endif
                 </div>

@@ -1,4 +1,3 @@
-Implementar roles e permissoes
+AO REGISTRAR USUARIO NAO LOGAR COMO ELE
 
-Verificar se o usuário é adm pra exibir opção de area do admin no menu da navbar
-Verificar se o usuário é adm para acessar /admin
+DELETAR USUARIO AO CLICAR NO BOTAO DE DELETAR E ATUALIZAR A LISTA DE USUARIOS SEM RECARREGAR A PAGINA

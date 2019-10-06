@@ -1,0 +1,60 @@
+.text{
+    text-align: center;
+}
+
+.text h3{
+    margin-top: 8px;
+}
+
+a {
+ text-decoration: none !important;
+}
+
+.py-4{
+    padding: 50px 0 50px 0 !important;
+}
+
+.folded-corner:hover .text{
+    visibility: visible;
+    color: #000000;;
+}
+.Services-tab{
+    margin-top:20px;
+}
+
+.folded-corner{
+    padding: 25px 25px;
+    position: relative;
+    text-decoration: none;
+    color: #000000;
+    background: transparent;
+    transition: all ease .3s;
+    border: 3px solid black;
+}
+
+.folded-corner:hover{
+    border-color: #007B5E;
+}
+
+.folded-corner:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 0px 0px 0;
+    border-color: #ddd #000;
+    transition: all ease .3s;
+}
+
+/*
+  on li hover make paper fold larger
+*/
+.folded-corner:hover:before {
+    border-width: 0 50px 50px 0;
+    border-color: #eee #81c391;
+}
+
+.service_tab_1:hover .fa-icon-image{
+    color: #000;
+}

@@ -82,9 +82,10 @@ class ProfileController extends Controller
                 'id' => $user->id,
                 'username' => $user->name,
                 'email' => $user->email,
+                'role' => ucfirst(str_replace(["\"", "[", "]"], "", $user->getRoleNames()))
             ],
             'pessoa' => $dados_pessoa,
-            'projetos' => $projetos
+            'projetos' => $projetos,
         ];
 
         return $view_data;
@@ -118,8 +119,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        // Se o usuário a ser editado não é o logado -> 401: Não autorizado
-        if (Auth::user()->id != $id)
+        // Se o usuário a ser editado não é o logado ou não é ADM -> 401: Não autorizado
+        if (!Auth::user()->can('editar usuarios') && Auth::user()->id != $id)
             abort(401);
 
         $estados = Estado::orderBy('nome', 'ASC')->get();
@@ -135,6 +136,8 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
+        $user = User::find($_POST['user_id']);
+
         //Se o usuario nao tem pessoa e deixou pessoa null, nao crie pessoa
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -158,7 +161,7 @@ class ProfileController extends Controller
             $validatedData = array_merge($validatedData, $validatedPessoa);
 
             // Se o usuário ja tem uma pessoa então a atualize senão crie uma e linke as FK
-            if (isset(Auth::user()->pessoa))
+            if (isset($user->pessoa))
                 $pessoa = Pessoa::where('user_id', $_POST['user_id'])->first();
             else
                 $pessoa = new Pessoa();
@@ -168,9 +171,9 @@ class ProfileController extends Controller
             $pessoa->sexo = $validatedData['sexo'];
             $pessoa->curso = $validatedData['curso'];
             $pessoa->telefone = $validatedData['telefone'];
-            $pessoa->user_id = Auth::user()->id;
+            $pessoa->user_id = $user->id;
             $pessoa->save();
-            DB::update("update users set pessoa_id = '" . $pessoa->id . "' where id = '" . Auth::user()->id . "'");
+            DB::update("update users set pessoa_id = '" . $pessoa->id . "' where id = '" . $user->id . "'");
 
             /*
              * Se algum dos dados de endereço foi preenchido entao valide os dados de endereco
@@ -189,7 +192,7 @@ class ProfileController extends Controller
                 $validatedData = array_merge($validatedData, $validatedEndereco);
 
                 // Se a pessoa ja tem endereco atualize senão crie um
-                if (isset(Auth::user()->pessoa->endereco))
+                if (isset($user->pessoa->endereco))
                     $endereco = Endereco::where('pessoa_id', $pessoa->id)->first();
                 else
                     $endereco = new Endereco();
@@ -205,7 +208,27 @@ class ProfileController extends Controller
                 DB::update("update pessoas set endereco_id = '" . $endereco->id . "' where id = '" . $pessoa->id . "'");
             }
         }
-        return Redirect::route('profile.index');
+
+        // Se o usuario que editou não é o logado entao volte pra area do ADM
+        if (Auth::user()->id == $user->id)
+            return Redirect::route('profile.index');
+        return Redirect::route('gerenciar_users');
+    }
+
+    /**
+     * Deleta o usuário especificado
+     *
+     * @param $id
+     * @return void
+     */
+    public function destroy($id)
+    {
+        if (!Auth::user()->can('deletar usuarios'))
+            return null;
+
+        $user = User::find($id);
+        $user->delete();
+        return;
     }
 
     /**
@@ -224,17 +247,6 @@ class ProfileController extends Controller
      * @return void
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param $id
-     * @return void
-     */
-    public function destroy($id)
     {
         //
     }

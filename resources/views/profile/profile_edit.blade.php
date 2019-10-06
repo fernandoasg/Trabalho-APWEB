@@ -1,7 +1,7 @@
 @extends('layouts.app_with_footer')
 
 @push('scripts')
-    <script src="{{ URL::asset('js/profile/profile_edit.js') }}"></script>
+    <script src="{{ URL::asset('js/profile/profile_edit.js') }}" defer></script>
     <script>
         <?php /** @var $view_data */?>
         // Aqui as variaveis cidade_id e estado_id são passadas como variaveis globais para o JS
@@ -25,7 +25,7 @@
 
                             <h3>Usuário: </h3>
 
-                            <input id="user_id" name="user_id" type="text" value="{{ Auth::user()->id }}"
+                            <input id="user_id" name="user_id" type="text" value="{{ $view_data['usuario']['id'] }}"
                                    style="display: none">
 
                             <div class="form-group row">
