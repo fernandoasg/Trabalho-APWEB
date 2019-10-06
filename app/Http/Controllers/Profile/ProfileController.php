@@ -8,15 +8,16 @@ use App\Models\Endereco\Estado;
 use App\Models\Pessoa;
 use App\Models\Projeto\Projeto;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth')->only(['edit', 'index', 'update']);
@@ -30,7 +31,6 @@ class ProfileController extends Controller
      */
     public function getProfileViewData($id)
     {
-
         // Se a funcão é que chamou esse método é a index o usuário é o logado, caso contrário busque pelo id do url
         $user = (debug_backtrace()[1]['function'] == 'index') ? $user = Auth::user() : $user = User::find($id);
 
@@ -39,24 +39,21 @@ class ProfileController extends Controller
             abort(404);
 
         $projetos = [];
-
         if (isset($user->pessoa->membros)) {
             foreach ($user->pessoa->membros as $membro) {
                 $projeto = Projeto::find($membro['projeto_id']);
                 $projeto->{"papeis"} = $membro->papeis;
                 array_push($projetos, $projeto);
             }
-        } else
-            $projetos = null;
+        }
 
         if (isset($user->pessoa)) {
             $dados_pessoa['nome'] = isset($user->pessoa->nome_completo) ? $user->pessoa->nome_completo : '';
-            $dados_pessoa['curso'] = isset($user->pessoa->curso) ? $user->pessoa->curso : 'Curso não informado';
-            $dados_pessoa['telefone'] = isset($user->pessoa->telefone) ? $user->pessoa->telefone : 'Telefone não informado';
+            $dados_pessoa['curso'] = isset($user->pessoa->curso) ? $user->pessoa->curso : '';
+            $dados_pessoa['telefone'] = isset($user->pessoa->telefone) ? $user->pessoa->telefone : '';
             $dados_pessoa['data_nascimento'] = isset($user->pessoa->data_nascimento) ? $user->pessoa->data_nascimento : '';
             $dados_pessoa['data_nascimento_dmY'] = isset($user->pessoa->data_nascimento) ? date("d/m/Y", strtotime($user->pessoa->data_nascimento)) : '';
             $dados_pessoa['sexo'] = isset($user->pessoa->sexo) ? trim($user->pessoa->sexo) : '';
-            str_replace('-', '/', date("m-d-Y", strtotime($dados_pessoa['data_nascimento'])));
 
             if (isset($user->pessoa->endereco)) {
                 $dados_pessoa['cep'] = $user->pessoa->endereco->cep;
@@ -85,10 +82,12 @@ class ProfileController extends Controller
                 'id' => $user->id,
                 'username' => $user->name,
                 'email' => $user->email,
+                'role' => ucfirst(str_replace(["\"", "[", "]"], "", $user->getRoleNames()))
             ],
             'pessoa' => $dados_pessoa,
-            'projetos' => $projetos
+            'projetos' => $projetos,
         ];
+
         return $view_data;
     }
 
@@ -120,8 +119,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        // Se o usuário a ser editado não é o logado -> 401: Não autorizado
-        if (Auth::user()->id != $id)
+        // Se o usuário a ser editado não é o logado ou não é ADM -> 401: Não autorizado
+        if (!Auth::user()->can('editar usuarios') && Auth::user()->id != $id)
             abort(401);
 
         $estados = Estado::orderBy('nome', 'ASC')->get();
@@ -133,10 +132,12 @@ class ProfileController extends Controller
      * Atualiza o usuário
      *
      * @param Request $request
-     * @param $id - ID do usuário a ser atualizado
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $user = User::find($_POST['user_id']);
+
         //Se o usuario nao tem pessoa e deixou pessoa null, nao crie pessoa
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -147,7 +148,8 @@ class ProfileController extends Controller
          * Se algum dos dados de pessoa ou endereco foi preenchido entao valide os dados de pessoa
          */
         if (!empty($_POST['nome_completo']) || !empty($_POST['data_nascimento']) || $_POST['sexo'] != 0 ||
-            !empty($_POST['telefone'])) {
+            !empty($_POST['telefone']) || !empty($_POST['cep']) || !empty($_POST['estado']) || !empty($_POST['cidade']) ||
+            !empty($_POST['rua']) || !empty($_POST['numero_rua'])) {
 
             $validatedPessoa = $request->validate([
                 'nome_completo' => ['string', 'max:255'],
@@ -156,11 +158,10 @@ class ProfileController extends Controller
                 'telefone' => ['string', 'max:20', 'nullable'],
                 'curso' => ['string', 'max:255', 'nullable']
             ]);
-
             $validatedData = array_merge($validatedData, $validatedPessoa);
 
             // Se o usuário ja tem uma pessoa então a atualize senão crie uma e linke as FK
-            if (isset(Auth::user()->pessoa))
+            if (isset($user->pessoa))
                 $pessoa = Pessoa::where('user_id', $_POST['user_id'])->first();
             else
                 $pessoa = new Pessoa();
@@ -170,17 +171,15 @@ class ProfileController extends Controller
             $pessoa->sexo = $validatedData['sexo'];
             $pessoa->curso = $validatedData['curso'];
             $pessoa->telefone = $validatedData['telefone'];
-            $pessoa->user_id = Auth::user()->id;
+            $pessoa->user_id = $user->id;
             $pessoa->save();
-
-            DB::update("update users set pessoa_id = '" . $pessoa->id . "' where id = '" . Auth::user()->id . "'");
+            DB::update("update users set pessoa_id = '" . $pessoa->id . "' where id = '" . $user->id . "'");
 
             /*
              * Se algum dos dados de endereço foi preenchido entao valide os dados de endereco
              */
             if (!empty($_POST['cep']) || !empty($_POST['estado']) || !empty($_POST['cidade']) ||
                 !empty($_POST['rua']) || !empty($_POST['numero_rua'])) {
-
                 $validatedEndereco = $request->validate([
                     'cep' => ['numeric', 'digits_between:7,9', 'nullable'],
                     'estado' => ['numeric'],
@@ -192,7 +191,8 @@ class ProfileController extends Controller
 
                 $validatedData = array_merge($validatedData, $validatedEndereco);
 
-                if (isset(Auth::user()->pessoa->endereco))
+                // Se a pessoa ja tem endereco atualize senão crie um
+                if (isset($user->pessoa->endereco))
                     $endereco = Endereco::where('pessoa_id', $pessoa->id)->first();
                 else
                     $endereco = new Endereco();
@@ -205,10 +205,30 @@ class ProfileController extends Controller
                 $endereco->numero = $validatedData['numero_rua'];
                 $endereco->pessoa_id = $pessoa->id;
                 $endereco->save();
-
                 DB::update("update pessoas set endereco_id = '" . $endereco->id . "' where id = '" . $pessoa->id . "'");
             }
         }
+
+        // Se o usuario que editou não é o logado entao volte pra area do ADM
+        if (Auth::user()->id == $user->id)
+            return Redirect::route('profile.index');
+        return Redirect::route('gerenciar_users');
+    }
+
+    /**
+     * Deleta o usuário especificado
+     *
+     * @param $id
+     * @return void
+     */
+    public function destroy($id)
+    {
+        if (!Auth::user()->can('deletar usuarios'))
+            return null;
+
+        $user = User::find($id);
+        $user->delete();
+        return;
     }
 
     /**
@@ -227,17 +247,6 @@ class ProfileController extends Controller
      * @return void
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param $id
-     * @return void
-     */
-    public function destroy($id)
     {
         //
     }

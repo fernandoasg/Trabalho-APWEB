@@ -47,4 +47,10 @@ Route::get('/contato', 'SobreController@contato');
  *  | Rota de registro de usuers           | POST                                   | register                   |                  | App\Http\Controllers\Auth\RegisterController@register                  | web,guest                                       |
  *  | Rota para exibir form de registro    | GET|HEAD                               | register                   | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest                                       |
  */
-Route::resource('profile', 'Profile\\ProfileController');
+Route::resource('profile', 'Profile\ProfileController');
+
+Route::get('/admin', 'Admin\AdminController@index')->name('admin_area');
+Route::get('/admin/usuarios', 'Admin\AdminController@showUsers')->name('gerenciar_users');
+Route::get('/admin/projetos', 'Admin\AdminController@showProjetos')->name('gerenciar_projetos');
+Route::get('/editor/noticias', 'Admin\AdminController@showNoticias')->name('gerenciar_noticias');
+Route::get('/admin/ledes', 'Admin\AdminController@showLedes')->name('gerenciar_ledes');

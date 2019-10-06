@@ -1,10 +1,10 @@
 @extends('layouts.app_with_footer')
 
 @push('scripts')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="{{ URL::asset('js/profile/profile_edit.js') }}"></script>
+    <script src="{{ URL::asset('js/profile/profile_edit.js') }}" defer></script>
     <script>
-            <?php /** @var $view_data */?>
+        <?php /** @var $view_data */?>
+        // Aqui as variaveis cidade_id e estado_id são passadas como variaveis globais para o JS
         let cidade_id = "<?php echo $view_data['pessoa']['cidade_id']?>";
         let estado_id = "<?php echo $view_data['pessoa']['estado_id']?>";
     </script>
@@ -16,15 +16,17 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Editar Perfil</div>
-                    <?php print_r($errors)?>
                     <div class="card-body">
                         <form method="post" action="{{ route('profile.update', Auth::user()->id) }}">
                             @csrf
                             @method('PATCH')
 
+                            <!-------------------------- USUÁRIO -------------------------->
+
                             <h3>Usuário: </h3>
 
-                            <input id="user_id" name="user_id" type="text" value="{{ Auth::user()->id }}" required style="display: none">
+                            <input id="user_id" name="user_id" type="text" value="{{ $view_data['usuario']['id'] }}"
+                                   style="display: none">
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Nome de Usuário</label>
@@ -58,8 +60,9 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <hr>
+
+                            <!-------------------------- PESSOA -------------------------->
 
                             <h3>Pessoal: </h3>
 
@@ -103,7 +106,8 @@
                                 <label for="sexo" class="col-md-4 col-form-label text-md-right">Gênero</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control @error('sexo') is-invalid @enderror" id="sexo" name="sexo">
+                                    <select class="form-control @error('sexo') is-invalid @enderror" id="sexo"
+                                            name="sexo">
                                         <option selected="selected" value="0">Selecione o Genero</option>
                                         @if($view_data['pessoa']['sexo'] == 'M')
                                             <option selected="selected" value="M">Masculino</option>
@@ -111,7 +115,7 @@
                                         @elseif($view_data['pessoa']['sexo'] == 'F')
                                             <option value="M">Masculino</option>
                                             <option selected="selected" value="F">Feminino</option>
-                                            @else
+                                        @else
                                             <option value="M">Masculino</option>
                                             <option value="F">Feminino</option>
                                         @endif
@@ -155,8 +159,9 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <hr>
+
+                            <!-------------------------- ENDERECO -------------------------->
 
                             <h3>Endereco: </h3>
 
@@ -256,6 +261,7 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -263,6 +269,7 @@
                                     </button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

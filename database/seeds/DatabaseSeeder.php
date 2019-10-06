@@ -22,19 +22,13 @@ class DatabaseSeeder extends Seeder
         Artisan::call('db:seed', array('--class' => 'EstadoSeeder'));
         Artisan::call('db:seed', array('--class' => 'MembrosSeeder'));
         Artisan::call('db:seed', array('--class' => 'InformacoesLedesSeeder'));
-//        Artisan::call('db:seed', array('--class' => 'PermissionSeeder'));
         Artisan::call('db:seed', array('--class' => 'PapeisSeeder'));
         Artisan::call('db:seed', array('--class' => 'PessoasSeeder'));
         Artisan::call('db:seed', array('--class' => 'ProjetosSeeder'));
+        Artisan::call('db:seed', array('--class' => 'RolesPermissionsSeeder'));
         Artisan::call('db:seed', array('--class' => 'UserSeeder'));
-//        Artisan::call('db:seed', array('--class' => 'RolesPermissionsSeeder'));
 
-        DB::insert("INSERT INTO membro_papel (papel_id, membro_id) VALUES
-                                                      (1,1),
-                                                      (2,1),
-                                                      (3,2),
-                                                      (4,3),
-                                                      (5,4);");
+        DB::insert("INSERT INTO membro_papel (papel_id, membro_id) VALUES (1,1), (2,1), (3,2), (4,3), (5,4);");
 
     }
 }
