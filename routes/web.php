@@ -22,7 +22,7 @@ Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
 
 // Rotas do ProjetosController
 Route::get('/projetos', 'ProjetosController@index');
-Route::get('/projetos/sigfap', 'ProjetosController@sigfap');
+Route::get('/projeto/{nomeProjeto}', 'ProjetosController@mostra');
 Route::get('/projetos/siai', 'ProjetosController@siai');
 Route::get('/projetos/ledes', 'ProjetosController@ledes');
 

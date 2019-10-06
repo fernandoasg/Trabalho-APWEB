@@ -12,7 +12,8 @@ class NoticiasController extends Controller
     }
 
     public function mostra($idNoticia){
-        //Pega a noticia pelo seu id no model
+        //Pega a noticia pelo seu id no model e envia ela para a view
+        
         return view('noticia', [
             'nomeNoticia'=>'Seleção de bolsistas para o LEDES',
             'nomeEditor'=>'Chiquito',

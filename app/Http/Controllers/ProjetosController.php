@@ -14,21 +14,11 @@ class ProjetosController extends Controller
         ]);
     }
 
-    public function sigfap(){
+    public function  mostra($nomeProjeto){
         return view('projeto', [
-            'nomeProjeto'=>'SIGFAP'
-        ]);
-    }
-
-    public function siai(){
-        return view('projeto', [
-            'nomeProjeto'=>'SIAI'
-        ]);
-    }
-
-    public function ledes(){
-        return view('projeto', [
-            'nomeProjeto'=>'Portal LEDES'
+            'nomeProjeto'=>$nomeProjeto,
+            'descricaoProjeto'=>'Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes Descrição do projeto replicada 10 vezes',
+            'vantagensProjeto'=>'Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20  Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20'
         ]);
     }
 }

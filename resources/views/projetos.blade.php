@@ -6,7 +6,7 @@
           <div class="col-md-4">
                <img src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg" alt="Explicação sobre a imagem" class="img-fluid">
                <p class="text-center m-1">
-                    <a href="projetos/sigfap">
+                    <a href="projeto/sigfap">
                     {{$projeto1}}
                     </a>
                </p>
@@ -15,7 +15,7 @@
           <div class="col-md-4">
                <img src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg" alt="Explicação sobre a imagem" class="img-fluid">
                <p class="text-center m-1">
-                    <a href="projetos/siai">
+                    <a href="projeto/siai">
                          {{$projeto2}}
                     </a>
                </p>
@@ -24,7 +24,7 @@
           <div class="col-md-4">
                <img src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg" alt="Explicação sobre a imagem" class="img-fluid">
                <p class="text-center m-1">
-               <a href="projetos/ledes">
+               <a href="projeto/ledes">
                     {{$projeto3}}
                </a>
                </p>
