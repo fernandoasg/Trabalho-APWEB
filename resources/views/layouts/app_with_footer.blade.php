@@ -174,7 +174,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto col-xs-12 col-sm-6 offset-sm-2 col-md-6 offset-md-2">
                     <li class="nav-item center-link">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item center-link">
                         <a class="nav-link" href="#">Sigfap</a>
@@ -183,7 +183,7 @@
                         <a class="nav-link" href="#">Redmine</a>
                     </li>
                     <li class="nav-item center-link">
-                        <a class="nav-link" href="/projetos">Projetos</a>
+                        <a class="nav-link" href="{{ url('/projetos') }}">Projetos</a>
                     </li>
                     <li class="nav-item center-link">
                         <a class="nav-link" href="#">Sobre</a>

@@ -4,61 +4,69 @@
 <div class="container">
      <div class="row mt-5">
           <div class="col-md-4">
+               <a href="{{ url('/noticia/1') }}">
                <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
+               </a>
           </div>
-          <div class="col-md-8">
-               <div class="mt-3">
+          <div class="col-md-8 mt-4">
+               <a href="{{ url('/noticia/1') }}">
                     <h5>Edital de Bolsistas para o LEDES - Classificação</h5>
                     <h6>01 de setembro de 2019</h6>
                     <h6>
                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
                     </h6>
-               </div>
+               </a>
           </div>
      </div>
 
      <div class="row mt-3">
           <div class="col-md-4">
+               <a href="{{ url('/noticia/2') }}">
                <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
+               </a>
           </div>
-          <div class="col-md-8">
-               <div class="mt-3">
+          <div class="col-md-8 mt-4">
+               <a href="{{ url('/noticia/2') }}">
                     <h5>Edital de Bolsistas para o LEDES - Classificação</h5>
                     <h6>01 de setembro de 2019</h6>
                     <h6>
                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
                     </h6>
-               </div>
+               </a>
           </div>
      </div>
 
      <div class="row mt-3">
           <div class="col-md-4">
+               <a href="{{ url('/noticia/3') }}">
                <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
+               </a>
           </div>
-          <div class="col-md-8">
-               <div class="mt-3">
+          <div class="col-md-8 mt-4">
+               <a href="{{ url('/noticia/3') }}">
                     <h5>Edital de Bolsistas para o LEDES - Classificação</h5>
                     <h6>01 de setembro de 2019</h6>
                     <h6>
                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
                     </h6>
-               </div>
+               </a>
           </div>
      </div>
 
      <div class="row mt-3">
           <div class="col-md-4">
+               <a href="{{ url('/noticia/4') }}">
                <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
+               </a>
           </div>
-          <div class="col-md-8">
-               <div class="mt-3">
+          <div class="col-md-8 mt-4">
+               <a href="{{ url('/noticia/4') }}">
                     <h5>Edital de Bolsistas para o LEDES - Classificação</h5>
                     <h6>01 de setembro de 2019</h6>
                     <h6>
                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
                     </h6>
-               </div>
+               </a>
           </div>
      </div>
 

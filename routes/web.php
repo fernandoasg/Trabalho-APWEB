@@ -29,6 +29,7 @@ Route::get('/projetos/ledes', 'ProjetosController@ledes');
 
 // Rotas do NoticiasController
 Route::get('/noticias', 'NoticiasController@index');
+Route::get('/noticia/{idNoticia}', 'NoticiasController@mostra');
 
 /*
  *  | Mostrar perfil usuário logado        | GET|HEAD                               | profile                    | profile.index    | App\Http\Controllers\Profile\ProfileController@index                   | web                                             |

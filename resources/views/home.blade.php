@@ -87,7 +87,7 @@
      </div>
 
      <div class="col-md-12 text-center mt-4">
-          <a href="/noticias" class="btn btn-primary center-block">Ver mais notícias</a>
+     <a href="{{ url('/noticias') }}" class="btn btn-primary center-block">Ver mais notícias</a>
      </div>
 </div>
 @endsection
