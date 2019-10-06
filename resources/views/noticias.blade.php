@@ -39,7 +39,7 @@
      <div class="row mt-3">
           <div class="col-md-4">
                <a href="{{ url('/noticia/3') }}">
-               <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
+                    <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
                </a>
           </div>
           <div class="col-md-8 mt-4">

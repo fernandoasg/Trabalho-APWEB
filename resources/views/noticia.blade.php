@@ -17,7 +17,7 @@
                <small>{{ $data }}</small>
           </div>
           <div class="col-md-3"></div>
-          <div class="col-md-3">
+          <div class="col-md-3 mt-1">
                <a class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
                <a class="tw-ic mr-3" role="button"><i class="fab fa-lg fa-twitter"></i></a>
           </div>
@@ -25,7 +25,7 @@
           <div class="col-md-12 mt-n2">
                <hr>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3 mb-3">
                <img src="{{$imgPath}}" alt="Explicação sobre a imagem" class="img-fluid">
           </div>
           <div class="col-md-8">
@@ -38,19 +38,19 @@
                <h6>Veja também:</h6>
           </div>
           <div class="col-md-4">
-               <a href="#">
+               <a href="{{ url('/noticia/7') }}">
                     <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
                     <h6 class="mt-3 text-center">Outra notícia</h6>         
                </a>
           </div>
           <div class="col-md-4">
-               <a href="#">
+               <a href="{{ url('/noticia/8') }}">
                     <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
                     <h6 class="mt-3 text-center">Outra notícia</h6>         
                </a>
           </div>
           <div class="col-md-4">
-               <a href="#">
+               <a href="{{ url('/noticia/9') }}">
                     <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
                     <h6 class="mt-3 text-center">Outra notícia</h6>         
                </a>
