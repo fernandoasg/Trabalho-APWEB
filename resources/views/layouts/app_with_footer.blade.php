@@ -186,10 +186,10 @@
                         <a class="nav-link" href="{{ url('/projetos') }}">Projetos</a>
                     </li>
                     <li class="nav-item center-link">
-                        <a class="nav-link" href="#">Sobre</a>
+                        <a class="nav-link" href="{{ url('/sobre') }}">Sobre</a>
                     </li>
                     <li class="nav-item center-link">
-                        <a class="nav-link" href="#">Contato</a>
+                        <a class="nav-link" href="{{ url('/contato') }}">Contato</a>
                     </li>
                 </ul>
                 <!-- Right Side Of Navbar -->

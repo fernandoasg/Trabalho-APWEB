@@ -31,6 +31,11 @@ Route::get('/projetos/ledes', 'ProjetosController@ledes');
 Route::get('/noticias', 'NoticiasController@index');
 Route::get('/noticia/{idNoticia}', 'NoticiasController@mostra');
 
+
+// Rotas do SobreController
+Route::get('/sobre', 'SobreController@index');
+Route::get('/contato', 'SobreController@contato');
+
 /*
  *  | Mostrar perfil usuário logado        | GET|HEAD                               | profile                    | profile.index    | App\Http\Controllers\Profile\ProfileController@index                   | web                                             |
  *  | Armazena perfil do usuário           | POST                                   | profile                    | profile.store    | App\Http\Controllers\Profile\ProfileController@store                   | web                                             |
