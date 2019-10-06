@@ -26,6 +26,10 @@ Route::get('/projetos/sigfap', 'ProjetosController@sigfap');
 Route::get('/projetos/siai', 'ProjetosController@siai');
 Route::get('/projetos/ledes', 'ProjetosController@ledes');
 
+
+// Rotas do NoticiasController
+Route::get('/noticias', 'NoticiasController@index');
+
 /*
  *  | Mostrar perfil usuário logado        | GET|HEAD                               | profile                    | profile.index    | App\Http\Controllers\Profile\ProfileController@index                   | web                                             |
  *  | Armazena perfil do usuário           | POST                                   | profile                    | profile.store    | App\Http\Controllers\Profile\ProfileController@store                   | web                                             |
