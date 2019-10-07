@@ -10,10 +10,6 @@ a {
  text-decoration: none !important;
 }
 
-.py-4{
-    padding: 50px 0 50px 0 !important;
-}
-
 .folded-corner:hover .text{
     visibility: visible;
     color: #000000;;

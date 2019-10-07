@@ -227,6 +227,12 @@ class ProfileController extends Controller
             return null;
 
         $user = User::find($id);
+        if(isset($user->pessoa)){
+            if(isset($user->pessoa->endereco)){
+                DB::table('enderecos')->where('pessoa_id', $user->pessoa->id)->delete();
+            }
+            $user->pessoa->delete();
+        }
         $user->delete();
         return;
     }
@@ -250,4 +256,5 @@ class ProfileController extends Controller
     {
         //
     }
+
 }
