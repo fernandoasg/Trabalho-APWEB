@@ -6,6 +6,7 @@
 
 @push('scripts')
     <script type="text/javascript" src="{{ asset('js/admin/users.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
 
 @section('content')
@@ -26,13 +27,19 @@
             </thead>
             <tbody>
             @foreach($users as $user)
-                <tr>
+                <tr id="{{ 'tr_user_'.$user->id }}">
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
                         @foreach($user->getRoleNames() as $role)
-                            {{ $role }}
+                            @if($role === 'administrador')
+                                <span class="py-1 px-2 rounded text-white"
+                                      style="background-color: #007B5E;">{{ $role }}</span>
+                            @else
+                                <span class="py-1 px-2 rounded text-white"
+                                      style="background-color: #5541c6;">{{ $role }}</span>
+                            @endif
                         @endforeach
                     </td>
                     @if(isset($user->pessoa))
@@ -48,9 +55,10 @@
                         <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary btn-sm active my-1"
                            role="button" aria-pressed="true"><i class="fas fa-cog"></i></a>
 
-                        <a href="" class="btn btn-primary btn-sm active"
-                           role="button" aria-pressed="true" onclick="deleteUser( {{ $user->id }} );"><i
-                                class="fas fa-trash"></i></a>
+                        <span class="btn btn-primary btn-sm active"
+                              role="button" aria-pressed="true"
+                              onclick="deleteUser('{{ $user->id }}', '{{ $user->name }}');"><i
+                                class="fas fa-trash"></i></span>
                     </td>
                 </tr>
             @endforeach

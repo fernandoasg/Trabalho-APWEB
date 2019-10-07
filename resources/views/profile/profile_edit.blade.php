@@ -1,7 +1,7 @@
 @extends('layouts.app_with_footer')
 
 @push('scripts')
-    <script src="{{ URL::asset('js/profile/profile_edit.js') }}" defer></script>
+    <script src="{{ asset('js/profile/profile_edit.js') }}" defer></script>
     <script>
         <?php /** @var $view_data */?>
         // Aqui as variaveis cidade_id e estado_id são passadas como variaveis globais para o JS

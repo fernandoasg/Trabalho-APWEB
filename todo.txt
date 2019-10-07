@@ -1,3 +1,5 @@
 AO REGISTRAR USUARIO NAO LOGAR COMO ELE
 
-DELETAR USUARIO AO CLICAR NO BOTAO DE DELETAR E ATUALIZAR A LISTA DE USUARIOS SEM RECARREGAR A PAGINA
+se usuario deixar pessoa vazio e ja tiver pessoa deletala
+
+se usuario é adm exibir botao de edicao pra todos as profile page
