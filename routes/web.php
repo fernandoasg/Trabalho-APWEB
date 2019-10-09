@@ -53,4 +53,8 @@ Route::get('/admin', 'Admin\AdminController@index')->name('admin_area');
 Route::get('/admin/usuarios', 'Admin\AdminController@showUsers')->name('gerenciar_users');
 Route::get('/admin/projetos', 'Admin\AdminController@showProjetos')->name('gerenciar_projetos');
 Route::get('/editor/noticias', 'Admin\AdminController@showNoticias')->name('gerenciar_noticias');
+
 Route::get('/admin/ledes', 'Admin\AdminController@showLedes')->name('gerenciar_ledes');
+Route::patch('/admin/ledes', 'Admin\AdminController@updateLedes')->name('atualizar_ledes');
+
+Route::post('/contato', 'Contato\ContatoController@sendContatctRequest')->name('enviar_contato');

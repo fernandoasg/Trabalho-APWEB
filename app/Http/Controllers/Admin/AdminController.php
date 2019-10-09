@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Table;
 
 class AdminController extends Controller
 {
@@ -47,8 +49,13 @@ class AdminController extends Controller
 
     public function showLedes(){
         $this->checkADM();
-        return view('Admin.ledes');
+        $dados_ledes = DB::table('informacoes_ledes')->get()->first();
+        return view('Admin.ledes')->with(compact('dados_ledes'));
     }
 
+    public function updateLedes(){
+        $this->checkADM();
+        return view('Admin.ledes');
+    }
 
 }

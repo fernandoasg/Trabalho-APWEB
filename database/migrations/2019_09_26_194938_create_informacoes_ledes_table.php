@@ -19,6 +19,12 @@ class CreateInformacoesLedesTable extends Migration
             $table->string('email');
             $table->time('horario_abertura');
             $table->time('horario_encerramento');
+
+            // todo: Integração com a API JS do google MAPS e armazenar valores que a API usa - coordenadas
+            $table->string('endereco');
+
+            $table->string('telefone');
+            $table->string('cep');
         });
 
     }

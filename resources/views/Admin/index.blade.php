@@ -46,6 +46,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
+                <a href="{{ route('gerenciar_ledes') }}">
                 <div class="folded-corner service_tab_1">
                     <div class="text">
                         <i class="fas fa-info-circle fa-5x fa-icon-image"></i>
@@ -55,6 +56,7 @@
                         </p>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
     </div>
