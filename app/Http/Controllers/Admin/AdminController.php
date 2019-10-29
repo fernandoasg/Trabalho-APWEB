@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Table;
+use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
@@ -68,4 +70,10 @@ class AdminController extends Controller
         return view ('Admin.cadastrarProjeto');
     }
 
+    public function editarProjeto(Request $request){
+        $this->checkADM();
+        $id = $request['id'];
+        $projeto = Projeto::find($id);
+        return view ('Admin.editarProjeto', ["projeto"=>$projeto]);
+    }
 }

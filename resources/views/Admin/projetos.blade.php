@@ -31,11 +31,20 @@
                     <td>{{ $projeto->descricao }}</td>
                     <td id="buttons-collumn">
                     
-                        <a href="" class="btn btn-primary btn-sm active my-1"
-                           role="button" aria-pressed="true"><i class="fas fa-cog"></i></a>
+                        
 
                         <span class="btn btn-primary btn-sm active">
                             
+                        <form action="/projetos/edit" method="POST">
+                                @method('GET')
+                                @csrf
+                                <input type='hidden' name='id' value='{{$projeto->id}}'>
+                                <button class="btn btn-primary btn-sm active fas fa-cog" type='submit' 
+                                aria-pressed="true">
+                                
+                                </button>
+                            </form>
+
                            <form action="/projetos/destroy" method="POST">
                                 @method('DELETE')
                                 @csrf

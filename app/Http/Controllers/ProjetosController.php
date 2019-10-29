@@ -52,6 +52,33 @@ class ProjetosController extends Controller
 
     }
 
+    public function updateProjeto(Request $request){
+
+
+        $data = $request->validate([
+            'id'=>['required'],
+            'nome' => ['required'],
+            'descricao' => ['required'],
+            'data_inicio'=> ['required'],
+            'data_fim'=>['']
+
+        ]);
+
+        $projeto = Projeto::find($data['id']);
+
+        $projeto->nome = $data['nome'];
+        $projeto->descricao = $data['descricao'];
+        $projeto->data_inicio = $data['data_inicio'];
+        $projeto->data_fim = $data['data_fim'];
+
+
+        $projeto->push();
+
+        return redirect('/admin/projetos');
+
+
+    }
+
 
     public function deleteProjeto(Request $request){
         

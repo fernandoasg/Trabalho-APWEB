@@ -8,7 +8,10 @@
                     <div class="card-header">Cadastrar Novo Projeto</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('projetos_store') }}">
-                            @csrf
+                             @csrf
+                            @method('PATCH')
+
+                            <input type='hidden' value='{{$projeto->id}}' name='id'>
 
                             <h3>Projeto: </h3>
 
@@ -18,7 +21,7 @@
                                 <div class="col-md-6">
                                     <input id="nome" type="text"
                                            class="form-control @error('nome') is-invalid @enderror" name="nome"
-                                           value="{{ old('nome') }}" required autocomplete="nome" autofocus>
+                                           value="{{$projeto->nome}}" required autocomplete="nome" autofocus>
 
                                     @error('nome')
                                     <span class="invalid-feedback" role="alert">
@@ -29,12 +32,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="descricao" class="col-md-4 col-form-label text-md-right">Descrição</label>
+                                <label for="descricao" class="col-md-4 col-form-label text-md-right" >Descrição</label>
 
                                 <div class="col-md-6">
                                     <input id="descricao" 
                                            class="form-control @error('descricao') is-invalid @enderror" name="descricao"
-                                           value="{{ old('descricao') }}" rows="5" required autocomplete="descricao"></textarea>
+                                           value="{{$projeto->descricao}}" rows="5" required autocomplete="descricao"></textarea>
 
                                     @error('descricao')
                                     <span class="invalid-feedback" role="alert">
@@ -50,7 +53,7 @@
                                 <div class="col-md-6">
                                     <input id="data_inicio" type="date"
                                            class="form-control @error('data_inicio') is-invalid @enderror" name="data_inicio"
-                                           value="{{ old('data_inicio') }}" required autocomplete="data_inicio" autofocus>
+                                           value="{{ $projeto->data_inicio }}" required autocomplete="data_inicio" autofocus>
 
                                     @error('data_inicio')
                                     <span class="invalid-feedback" role="alert">
@@ -67,7 +70,7 @@
                                 <div class="col-md-6">
                                     <input id="data_fim" type="date"
                                            class="form-control @error('data_fim') is-invalid @enderror" name="data_fim"
-                                           value="{{ old('data_fim') }}" autocomplete="data_fim" autofocus>
+                                           value="{{ $projeto->data_fim }}" autocomplete="data_fim" autofocus>
 
                                     @error('data_fim')
                                     <span class="invalid-feedback" role="alert">
