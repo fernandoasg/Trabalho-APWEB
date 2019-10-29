@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Models\Projeto\Projeto;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Table;
+use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
@@ -39,7 +42,10 @@ class AdminController extends Controller
 
     public function showProjetos(){
         $this->checkADM();
-        return view('Admin.projetos');
+        $projetos = Projeto::all();
+        return view('Admin.projetos',[
+            'projetos' => $projetos,
+        ]);
     }
 
     public function showPosts(){
@@ -58,4 +64,16 @@ class AdminController extends Controller
         return view('Admin.ledes');
     }
 
+
+    public function createProjeto(){
+        $this->checkADM();
+        return view ('Admin.cadastrarProjeto');
+    }
+
+    public function editarProjeto(Request $request){
+        $this->checkADM();
+        $id = $request['id'];
+        $projeto = Projeto::find($id);
+        return view ('Admin.editarProjeto', ["projeto"=>$projeto]);
+    }
 }

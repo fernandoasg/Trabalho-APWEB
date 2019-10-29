@@ -58,3 +58,15 @@ Route::get('/admin/ledes', 'Admin\AdminController@showLedes')->name('gerenciar_l
 Route::patch('/admin/ledes', 'Admin\AdminController@updateLedes')->name('atualizar_ledes');
 
 Route::post('/contato', 'Contato\ContatoController@sendContatctRequest')->name('enviar_contato');
+
+# GET	/projetos/create	create	projetos.create
+Route::get('projetos/create', 'Admin\AdminController@createProjeto')->name('projetos_create');
+
+#POST	/projetos/store	projetos.store
+Route::post('projetos', 'ProjetosController@storeProjeto')->name('projetos_store');
+Route::patch('projetos', 'ProjetosController@updateProjeto')->name('projetos_store');
+
+#DELETE	/projetos/{projeto}	destroy	photos.destroy
+Route::delete('projetos/destroy', 'ProjetosController@deleteProjeto')->name('projetos_destroy');
+
+Route::get('projetos/edit', 'Admin\AdminController@editarProjeto')->name('editar_projetos');
