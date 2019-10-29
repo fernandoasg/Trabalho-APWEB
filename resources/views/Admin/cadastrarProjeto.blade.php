@@ -67,7 +67,7 @@
                                 <div class="col-md-6">
                                     <input id="data_fim" type="date"
                                            class="form-control @error('data_fim') is-invalid @enderror" name="data_fim"
-                                           value="{{ old('data_fim') }}" required autocomplete="data_fim" autofocus>
+                                           value="{{ old('data_fim') }}" autocomplete="data_fim" autofocus>
 
                                     @error('data_fim')
                                     <span class="invalid-feedback" role="alert">

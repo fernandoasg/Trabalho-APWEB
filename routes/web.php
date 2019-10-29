@@ -64,3 +64,6 @@ Route::get('projetos/create', 'Admin\AdminController@createProjeto')->name('proj
 
 #POST	/photos	store	photos.store
 Route::post('projetos', 'ProjetosController@storeProjeto')->name('projetos_store');
+
+#DELETE	/photos/{photo}	destroy	photos.destroy
+Route::delete('projetos/destroy', 'ProjetosController@deleteProjeto')->name('projetos_destroy');

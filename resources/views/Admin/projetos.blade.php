@@ -34,10 +34,18 @@
                         <a href="" class="btn btn-primary btn-sm active my-1"
                            role="button" aria-pressed="true"><i class="fas fa-cog"></i></a>
 
-                        <span class="btn btn-primary btn-sm active"
-                              role="button" aria-pressed="true"
-                              onclick="deleteProjeto('{{ $projeto->id }});"><i
-                                class="fas fa-trash"></i></span>
+                        <span class="btn btn-primary btn-sm active">
+                            
+                           <form action="/projetos/destroy" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <input type='hidden' name='id' value='{{$projeto->id}}'>
+                                <button class="btn btn-primary btn-sm active fas fa-trash" type='submit' 
+                                aria-pressed="true">
+                                
+                                </button>
+                            </form>
+                        </span>
                     </td>
                 </tr>
             @endforeach

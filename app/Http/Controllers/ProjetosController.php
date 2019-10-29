@@ -36,9 +36,30 @@ class ProjetosController extends Controller
     }
 
     public function storeProjeto(Request $request){
-        event(new Registered($projeto = $this->create($request->all())));
+
+        $data = $request->validate([
+
+            'nome' => ['required'],
+            'descricao' => ['required'],
+            'data_inicio'=> ['required'],
+            'data_fim'=>['']
+
+        ]);
+
+        Projeto::create($data);
 
         return redirect('/admin/projetos');
 
     }
+
+
+    public function deleteProjeto(Request $request){
+        
+        $id = $request['id'];
+        
+        Projeto::destroy($id);
+
+        return redirect('/admin/projetos');
+    }
+
 }
