@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Models\Projeto\Projeto;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,10 @@ class AdminController extends Controller
 
     public function showProjetos(){
         $this->checkADM();
-        return view('Admin.projetos');
+        $projetos = Projeto::all();
+        return view('Admin.projetos',[
+            'projetos' => $projetos,
+        ]);
     }
 
     public function showPosts(){
@@ -56,6 +60,12 @@ class AdminController extends Controller
     public function updateLedes(){
         $this->checkADM();
         return view('Admin.ledes');
+    }
+
+
+    public function createProjeto(){
+        $this->checkADM();
+        return view ('Admin.cadastrarProjeto');
     }
 
 }

@@ -58,3 +58,9 @@ Route::get('/admin/ledes', 'Admin\AdminController@showLedes')->name('gerenciar_l
 Route::patch('/admin/ledes', 'Admin\AdminController@updateLedes')->name('atualizar_ledes');
 
 Route::post('/contato', 'Contato\ContatoController@sendContatctRequest')->name('enviar_contato');
+
+# GET	/photos/create	create	photos.create
+Route::get('projetos/create', 'Admin\AdminController@createProjeto')->name('projetos_create');
+
+#POST	/photos	store	photos.store
+Route::post('projetos', 'ProjetosController@storeProjeto')->name('projetos_store');

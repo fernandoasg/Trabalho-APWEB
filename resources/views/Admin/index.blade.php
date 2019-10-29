@@ -24,15 +24,17 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
-                <div class="folded-corner service_tab_1">
-                    <div class="text">
-                        <i class="fas fa-tasks fa-5x fa-icon-image"></i>
-                        <h3>Gerenciar Projetos</h3>
-                        <p>
-                            Adicionar, Editar e Remover Projetos, seus membros e os papeis de tais membros.
-                        </p>
+                <a href="{{route('gerenciar_projetos')}}">
+                    <div class="folded-corner service_tab_1">
+                        <div class="text">
+                            <i class="fas fa-tasks fa-5x fa-icon-image"></i>
+                            <h3>Gerenciar Projetos</h3>
+                            <p>
+                                Adicionar, Editar e Remover Projetos, seus membros e os papeis de tais membros.
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
                 <div class="folded-corner service_tab_1">
