@@ -11,7 +11,7 @@ class Pessoa extends Model
 {
 
     protected $fillable = [
-        'nome_completo', 'sexo', 'data_nascimento', 'user_id',
+        'nome_completo', 'sexo', 'data_nascimento', 'user_id', 'curso', 'telefone', 'user_id', 'endereco_id'
     ];
 
     public function user()
@@ -19,14 +19,13 @@ class Pessoa extends Model
         return $this->hasOne(User::class);
     }
 
-    public function endereco(){
+    public function endereco()
+    {
         return $this->hasOne(Endereco::class);
     }
 
-    /**
-     * Pega todos os registros onde a pessoa é membro
-     */
-    public function membros(){
+    public function membros()
+    {
         return $this->hasMany(Membro::class);
     }
 }

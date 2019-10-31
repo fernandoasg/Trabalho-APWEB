@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Noticia;
 
-class NoticiasController extends Controller
+class NoticiaController extends Controller
 {
-    
+
     public function index(){
         return view('noticias');
     }
 
     public function mostra($idNoticia){
         //Pega a noticia pelo seu id no model e envia ela para a view
-        
+
         //$noticia = Noticia::find($idNoticia);
 
         return view('noticia', [

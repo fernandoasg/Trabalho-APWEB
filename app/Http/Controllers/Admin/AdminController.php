@@ -7,9 +7,8 @@ use App\Models\Projeto\Projeto;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Table;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -20,60 +19,71 @@ class AdminController extends Controller
     }
 
     // Checa se o usuário logado é ADM, não pode ser feito no construtor pq o middleware ainda não rodou
-    public function checkADM(){
+    public function checkADM()
+    {
         if (!Auth::user()->can('criar usuarios'))
             abort('401');
         return null;
     }
 
-    /**
-     * Mostra a area do administrador
-     */
-    public function index(){
+    public function index()
+    {
         $this->checkADM();
-        return view('Admin.index');
+        return view('admin.index');
     }
 
-    public function showUsers(){
+    public function showUsers()
+    {
         $this->checkADM();
         $users = User::all();
-        return view('Admin.users')->with(compact('users'));
+        return view('admin.dashboard_users')->with(compact('users'));
     }
 
-    public function showProjetos(){
+    public function showProjetos()
+    {
         $this->checkADM();
         $projetos = Projeto::all();
-        return view('Admin.projetos',[
-            'projetos' => $projetos,
-        ]);
+        return view('admin.projetos')->with(compact('projetos'));
     }
 
-    public function showPosts(){
+    public function showPosts()
+    {
         $this->checkADM();
-        return view('Admin.posts');
+        return view('admin.posts');
     }
 
-    public function showLedes(){
+    public function showLedes()
+    {
         $this->checkADM();
         $dados_ledes = DB::table('informacoes_ledes')->get()->first();
-        return view('Admin.ledes')->with(compact('dados_ledes'));
+        return view('admin.ledes')->with(compact('dados_ledes'));
     }
 
-    public function updateLedes(){
+    public function updateLedes()
+    {
         $this->checkADM();
-        return view('Admin.ledes');
+        DB::table('informacoes_ledes')->where('id', 1)->update(array(
+            'cep' => $_POST['cep'],
+            'nome' => $_POST['nome'],
+            'email' => $_POST['email'],
+            'endereco' => $_POST['endereco'],
+            'telefone' => $_POST['telefone'],
+            'horario_abertura' => $_POST['horario_abertura'],
+            'horario_encerramento' => $_POST['horario_encerramento'],
+        ));
+        return Redirect::route('dashboard_ledes');
     }
 
-
-    public function createProjeto(){
+    public function createProjeto()
+    {
         $this->checkADM();
-        return view ('Admin.cadastrarProjeto');
+        return view('admin.projeto.criar_projeto');
     }
 
-    public function editarProjeto(Request $request){
+    public function editarProjeto(Request $request)
+    {
         $this->checkADM();
-        $id = $request['id'];
-        $projeto = Projeto::find($id);
-        return view ('Admin.editarProjeto', ["projeto"=>$projeto]);
+        $projeto = Projeto::find($request['id']);
+        return view('Admin.editarProjeto')->with(compact('projeto'));
     }
 }

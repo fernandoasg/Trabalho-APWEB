@@ -58,10 +58,10 @@
                         <li><h3>{{ $view_data['pessoa']['nome'] }}</h3></li>
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            @if(empty($view_data['pessoa']['estado']))
+                            @if(empty($view_data['endereco']['estado']))
                                 <span>Endereço não informado</span>
                             @else
-                                <span>{{ $view_data['pessoa']['cidade'] }}, {{ $view_data['pessoa']['estado'] }}</span>
+                                <span>{{ $view_data['endereco']['cidade'] }}, {{ $view_data['endereco']['estado'] }}</span>
                             @endif
                         </li>
                         <li>

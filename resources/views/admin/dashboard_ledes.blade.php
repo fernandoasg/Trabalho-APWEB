@@ -93,6 +93,60 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="endereco"
+                                       class="col-md-4 col-form-label text-md-right">Endereço</label>
+
+                                <div class="col-md-6">
+                                    <input id="endereco" type="text"
+                                           class="form-control @error('endereco') is-invalid @enderror"
+                                           name="endereco"
+                                           value="{{ $dados_ledes->endereco }}" required autofocus>
+
+                                    @error('endereco')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="telefone"
+                                       class="col-md-4 col-form-label text-md-right">Telefone</label>
+
+                                <div class="col-md-6">
+                                    <input id="telefone" type="text"
+                                           class="form-control @error('telefone') is-invalid @enderror"
+                                           name="telefone"
+                                           value="{{ $dados_ledes->telefone }}" required autofocus>
+
+                                    @error('telefone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="cep"
+                                       class="col-md-4 col-form-label text-md-right">CEP</label>
+
+                                <div class="col-md-6">
+                                    <input id="cep" type="text"
+                                           class="form-control @error('cep') is-invalid @enderror"
+                                           name="cep"
+                                           value="{{ $dados_ledes->cep }}" required autofocus>
+
+                                    @error('cep')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

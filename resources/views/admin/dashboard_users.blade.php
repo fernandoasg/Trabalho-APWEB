@@ -5,7 +5,7 @@
 @endpush
 
 @push('scripts')
-    <script type="text/javascript" src="{{ asset('js/admin/users.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/dashboard_users.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
 

@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab  item">
-                <a href="{{route('gerenciar_users')}}">
+                <a href="{{route('dashboard_users')}}">
                     <div class="folded-corner service_tab_1">
                         <div class="text">
                             <i class="fas fa-users-cog fa-5x fa-icon-image"></i>
@@ -24,7 +24,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
-                <a href="{{route('gerenciar_projetos')}}">
+                <a href="{{route('dashboard_projetos')}}">
                     <div class="folded-corner service_tab_1">
                         <div class="text">
                             <i class="fas fa-tasks fa-5x fa-icon-image"></i>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
-                <a href="{{ route('gerenciar_ledes') }}">
+                <a href="{{ route('dashboard_ledes') }}">
                 <div class="folded-corner service_tab_1">
                     <div class="text">
                         <i class="fas fa-info-circle fa-5x fa-icon-image"></i>

@@ -10,7 +10,10 @@ class Endereco extends Model
 
     public $timestamps = false;
 
-    // Um endereço pode ser usado por várias pessoas
+    protected $fillable = [
+        'bairro', 'rua', 'numero', 'cep', 'pessoa_id', 'cidade_id', 'estado_id'
+    ];
+
     public function pessoa(){
         return $this->hasMany(Pessoa::class);
     }

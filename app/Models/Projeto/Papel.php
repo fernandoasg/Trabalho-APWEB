@@ -10,6 +10,8 @@ class Papel extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['funcao','descricao', 'data_inicio', 'data_fim'];
+
     public function membro(){
         return $this->belongsToMany(Membro::class);
     }

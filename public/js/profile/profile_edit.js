@@ -4,7 +4,7 @@
  */
 function getcidades(cidade_id) {
 
-    let estado_select_box = $("#estado");
+    let estado_select_box = $("#estado_id");
 
     if (estado_select_box.val() !== '') {
 
@@ -25,7 +25,7 @@ function getcidades(cidade_id) {
                 $('#' + dependent).html(result);
 
                 if (cidade_id != null)
-                    $("#cidade").val(cidade_id);
+                    $("#cidade_id").val(cidade_id);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(JSON.stringify(jqXHR));
@@ -37,12 +37,12 @@ function getcidades(cidade_id) {
 
 $(document).ready(function () {
 
-    $('#estado').val(estado_id);
+    $('#estado_id').val(estado_id);
 
     getcidades(cidade_id);
 
     // Quando o usuário selecionar um estado, mostre as cidades de tal no select de cidades
-    $('#estado').change(function () {
+    $('#estado_id').change(function () {
         getcidades(null);
     }),
 
@@ -82,7 +82,7 @@ $(document).ready(function () {
                             console.log('COD: ' + uf + ' = ' + resul_array[0] + '\nCOD: ' + cidade + ' = ' + resul_array[1]);
 
                             // Altera o Campo do estado
-                            $('#estado').val(resul_array[0]);
+                            $('#estado_id').val(resul_array[0]);
 
                             // Chama essa função para setar
                             getcidades(resul_array[1]);

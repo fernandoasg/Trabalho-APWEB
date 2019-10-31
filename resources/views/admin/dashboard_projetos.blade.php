@@ -5,7 +5,7 @@
 @endpush
 
 @push('scripts')
-    <script type="text/javascript" src="{{ asset('js/admin/users.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/dashboard_users.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
 
@@ -30,18 +30,18 @@
                     <td>{{ $projeto->nome }}</td>
                     <td>{{ $projeto->descricao }}</td>
                     <td id="buttons-collumn">
-                    
-                        
+
+
 
                         <span class="btn btn-primary btn-sm active">
-                            
+
                         <form action="/projetos/edit" method="POST">
                                 @method('GET')
                                 @csrf
                                 <input type='hidden' name='id' value='{{$projeto->id}}'>
-                                <button class="btn btn-primary btn-sm active fas fa-cog" type='submit' 
+                                <button class="btn btn-primary btn-sm active fas fa-cog" type='submit'
                                 aria-pressed="true">
-                                
+
                                 </button>
                             </form>
 
@@ -49,9 +49,9 @@
                                 @method('DELETE')
                                 @csrf
                                 <input type='hidden' name='id' value='{{$projeto->id}}'>
-                                <button class="btn btn-primary btn-sm active fas fa-trash" type='submit' 
+                                <button class="btn btn-primary btn-sm active fas fa-trash" type='submit'
                                 aria-pressed="true">
-                                
+
                                 </button>
                             </form>
                         </span>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
 
-class ProjetosController extends Controller
+class ProjetoController extends Controller
 {
     public function index(){
         return view('projetos', [
@@ -23,7 +23,6 @@ class ProjetosController extends Controller
             'vantagensProjeto'=>'Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20  Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20 Vantagens do projeto x20'
         ]);
     }
-
 
     protected function create(array $data)
     {
@@ -54,7 +53,6 @@ class ProjetosController extends Controller
 
     public function updateProjeto(Request $request){
 
-
         $data = $request->validate([
             'id'=>['required'],
             'nome' => ['required'],
@@ -71,19 +69,16 @@ class ProjetosController extends Controller
         $projeto->data_inicio = $data['data_inicio'];
         $projeto->data_fim = $data['data_fim'];
 
-
         $projeto->push();
 
         return redirect('/admin/projetos');
-
-
     }
 
 
     public function deleteProjeto(Request $request){
-        
+
         $id = $request['id'];
-        
+
         Projeto::destroy($id);
 
         return redirect('/admin/projetos');
