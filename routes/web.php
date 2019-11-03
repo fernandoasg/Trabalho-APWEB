@@ -31,7 +31,8 @@ Route::resource('post', 'Post\PostController', ['except' => 'index']);
 
 /* ---------------------------------------- ABOUT ---------------------------------------- */
 Route::view('/sobre', 'sobre')->name('sobre');
-Route::view('/contato', 'contato')->name('contato');
+//Route::view('/contato', 'contato')->name('contato');
+Route::get('/contato', 'Contato\ContatoController@index');
 
 /* ---------------------------------------- ADMIN E EDITOR ---------------------------------------- */
 Route::get('/admin', 'Admin\AdminController@index')->name('admin_area');
