@@ -43,7 +43,7 @@ class AdminController extends Controller
     {
         $this->checkADM();
         $projetos = Projeto::all();
-        return view('admin.projetos')->with(compact('projetos'));
+        return view('admin.dashboard_projetos')->with(compact('projetos'));
     }
 
     public function showPosts()

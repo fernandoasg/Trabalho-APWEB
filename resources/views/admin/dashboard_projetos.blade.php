@@ -1,12 +1,7 @@
 @extends('layouts.app_with_footer')
 
 @push('styles')
-    <link href="{{ asset('css/admin/users.css') }}" rel="stylesheet">
-@endpush
-
-@push('scripts')
-    <script type="text/javascript" src="{{ asset('js/admin/dashboard_users.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="{{ asset('css/admin/dashboard_projetos.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -31,26 +26,25 @@
                     <td>{{ $projeto->descricao }}</td>
                     <td id="buttons-collumn">
 
-
-
                         <span class="btn btn-primary btn-sm active">
-
-                        <form action="/projetos/edit" method="POST">
+                            <form action="/projetos/edit" method="POST">
                                 @method('GET')
                                 @csrf
-                                <input type='hidden' name='id' value='{{$projeto->id}}'>
-                                <button class="btn btn-primary btn-sm active fas fa-cog" type='submit'
-                                aria-pressed="true">
+                                    <input type='hidden' name='id' value='{{$projeto->id}}'>
+                                    <button class="btn btn-primary btn-sm active fas fa-cog" type='submit'
+                                            aria-pressed="true">
 
-                                </button>
-                            </form>
+                                    </button>
+                                </form>
+                        </span>
 
-                           <form action="/projetos/destroy" method="POST">
+                        <span class="btn btn-primary btn-sm active">
+                            <form action="/projetos/destroy" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <input type='hidden' name='id' value='{{$projeto->id}}'>
                                 <button class="btn btn-primary btn-sm active fas fa-trash" type='submit'
-                                aria-pressed="true">
+                                        aria-pressed="true">
 
                                 </button>
                             </form>
@@ -61,8 +55,8 @@
             </tbody>
         </table>
 
-        <a href="{{ route('projetos_create') }}"
-           class="btn btn-primary btn-lg active"
-           role="button" aria-pressed="true">Criar Projeto</a>
+{{--        <a href="{{ route('projetos_create') }}"--}}
+{{--           class="btn btn-primary btn-lg active"--}}
+{{--           role="button" aria-pressed="true">Criar Projeto</a>--}}
     </div>
 @endsection

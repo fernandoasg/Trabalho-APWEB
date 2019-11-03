@@ -34,3 +34,4 @@ class ProjetosSeeder extends Seeder
         $projeto->save();
     }
 }
+

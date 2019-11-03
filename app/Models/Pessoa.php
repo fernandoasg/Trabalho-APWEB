@@ -28,4 +28,9 @@ class Pessoa extends Model
     {
         return $this->hasMany(Membro::class);
     }
+
+    public function post()
+    {
+        return $this->hasMany(Membro::class);
+    }
 }

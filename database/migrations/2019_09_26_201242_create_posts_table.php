@@ -15,10 +15,14 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo');
-            $table->text('introducao')->nullable();
-            $table->text('corpo');
-            $table->text('encerramento')->nullable();
+            $table->string('title');
+            $table->text('intro')->nullable();
+            $table->text('body');
+            $table->text('conclusion')->nullable();
+
+            $table->unsignedBigInteger('pessoa_id');
+            $table->index('pessoa_id');
+
             $table->timestamps();
         });
     }

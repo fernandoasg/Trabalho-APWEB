@@ -21,7 +21,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/layouts/app_with_footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     @stack('styles')
 
 </head>

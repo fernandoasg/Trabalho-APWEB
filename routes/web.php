@@ -18,12 +18,13 @@ Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
  *  | Deleta resource                 | DELETE        | resource/{resource}         | resource.destroy  | App\Http\Controllers\resource\resourceController@destroy   | web                                             |
  *  | Mostra formulario de alteracao  | GET|HEAD      | resource/{resource}/edit    | resource.edit     | App\Http\Controllers\resource\resourceController@edit      | web                                             |
  */
-Route::resource('projeto', 'Projeto\ProjetoController', [
+Route::resource('projeto', 'Projeto\ProjetoController');
+
+Route::resource('profile', 'Profile\ProfileController', [
     'except' => ['create', 'store']
 ]);
 
-Route::resource('noticia', 'Noticia\NoticiaController');
-Route::resource('profile', 'Profile\ProfileController');
+Route::resource('post', 'Post\PostController', ['except' => 'index']);
 
 /* ---------------------------------------- ABOUT ---------------------------------------- */
 Route::view('/sobre', 'sobre')->name('sobre');
@@ -37,6 +38,8 @@ Route::get('/admin/usuarios', 'Admin\AdminController@showUsers')->name('dashboar
 Route::get('/admin/projetos', 'Admin\AdminController@showProjetos')->name('dashboard_projetos');
 Route::get('/editor/noticias', 'Admin\AdminController@showNoticias')->name('dashboard_noticias');
 
+//alterar nome
 Route::patch('/admin/ledes', 'Admin\AdminController@updateLedes')->name('atualizar_ledes');
 
+//ver essa merda
 Route::post('/contato', 'Contato\ContatoController@sendContactRequest')->name('enviar_contato');
