@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers\Projeto;
 
+use App\Models\Pessoa;
+use App\Models\Projeto\Membro;
 use App\Models\Projeto\Projeto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ProjetoController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['edit', 'index', 'update']);
+        $this->middleware('auth')->only(['edit', 'update']);
+    }
+
+    public function index()
+    {
+        $projetos = Projeto::all();
+        return view('projeto.projetos')->with(compact('projetos'));
     }
 
     public function show($id)
     {
         $projeto = Projeto::find($id);
-        return view('projeto.index')->with(compact('projeto'));
+        $membros = Membro::where('projeto_id', $id)->get();
+        return view('projeto.index')->with(compact('projeto', 'membros'));
     }
 
     public function edit($id)
@@ -29,11 +39,11 @@ class ProjetoController extends Controller
     {
 
         $data = $request->validate([
-            'id'=>['required'],
+            'id' => ['required'],
             'nome' => ['required'],
             'descricao' => ['required'],
-            'data_inicio'=> ['required'],
-            'data_fim'=>['']
+            'data_inicio' => ['required'],
+            'data_fim' => ['']
         ]);
 
         $projeto = Projeto::find($data['id']);
@@ -59,12 +69,13 @@ class ProjetoController extends Controller
         return Projeto::create([
             'nome' => $data['nome'],
             'descricao' => $data['descricao'],
-            'data_inicio'=>$data['data_inicio'],
-            'data_fim'=>$data['data_fim']
+            'data_inicio' => $data['data_inicio'],
+            'data_fim' => $data['data_fim']
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
     }
 
 }

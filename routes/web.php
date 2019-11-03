@@ -20,6 +20,9 @@ Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
  */
 Route::resource('projeto', 'Projeto\ProjetoController');
 
+//Só pra usar url no plural
+Route::get('/projetos', 'Projeto\ProjetoController@index');
+
 Route::resource('profile', 'Profile\ProfileController', [
     'except' => ['create', 'store']
 ]);

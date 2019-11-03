@@ -3,11 +3,9 @@
 @section('content')
     <div class="container my-4">
         <div class="">
-            <h1>
-                {{$projeto->nome}}
-            </h1>
-
+            <h1>{{$projeto->nome}}</h1>
             <hr>
+
             <div class="">
                 <img
                     src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg"
@@ -45,16 +43,24 @@
             <div class="my-5">
                 <h4><strong>Membros</strong></h4>
             </div>
+
             <div class="d-flex">
-                <div class="card p-2" style="width: 18rem;">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm7TzNAEPNDgeNNBZBiyYaVK34kpXYBV6CjgIHUtCkpyL6oyqW"
-                        class="card-img-top" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Carl Johnson</h5>
-                        <p class="card-text">Documentador</p>
+                @foreach($membros as $membro)
+                    <div class="card mx-1 p-2">
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm7TzNAEPNDgeNNBZBiyYaVK34kpXYBV6CjgIHUtCkpyL6oyqW"
+                            class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{$membro->pessoa->nome_completo}}</h5>
+                            @foreach($membro->papeis as $papel)
+                                <div class="mt-3">
+                                    <p class="mb-0">{{$papel->funcao}}</p>
+                                    <small>{{date("m/d/Y", strtotime($papel->data_inicio))}} Até {{date("m/d/Y", strtotime($papel->data_fim)) ?? 'atualmente'}}</small>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
 @endsection

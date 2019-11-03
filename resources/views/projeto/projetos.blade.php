@@ -1,34 +1,30 @@
 @extends('layouts.app_with_footer')
 
 @section('content')
-<div class="container mt-4 mb-4">
-     <div class="row">
-          <div class="col-md-4">
-               <img src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg" alt="Explicação sobre a imagem" class="img-fluid">
-               <p class="text-center m-1">
-                    <a href="projeto/sigfap">
-                    {{$projeto1}}
+    <div class="container mt-4 mb-4">
+        <div class="row">
+            @foreach($projetos as $projeto)
+                <div class="col-md-4">
+                    <a href="{{ url('projeto/'.$projeto->id) }}" class="text-decoration-none">
+                        <h2 class="m-1">
+                            {{$projeto->nome}}
+                        </h2>
+                        <img
+                            src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg"
+                            alt="project image"
+                            class="img-fluid">
                     </a>
-               </p>
-          </div>
-
-          <div class="col-md-4">
-               <img src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg" alt="Explicação sobre a imagem" class="img-fluid">
-               <p class="text-center m-1">
-                    <a href="projeto/siai">
-                         {{$projeto2}}
-                    </a>
-               </p>
-          </div>
-
-          <div class="col-md-4">
-               <img src="https://artia.com/wp-content/uploads/2015/04/Entenda-a-importância-da-declaração-do-escopo-para-o-sucesso-do-seu-projeto-696x364.jpg" alt="Explicação sobre a imagem" class="img-fluid">
-               <p class="text-center m-1">
-               <a href="projeto/ledes">
-                    {{$projeto3}}
-               </a>
-               </p>
-          </div>
-     </div>
-</div>
+                    <div class="flex-row">
+                        <span>Inicio: {{date("m/d/Y", strtotime($projeto->data_inicio))}}</span>
+                    </div>
+                    <div class="flex-row">
+                        <span>Fim: {{date("m/d/Y", strtotime($projeto->data_fim)) ?? ''}}</span>
+                    </div>
+                    <div class="mt-3">
+                        <p>{{$projeto->descricao}}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
