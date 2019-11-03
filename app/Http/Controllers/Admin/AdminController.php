@@ -80,6 +80,10 @@ class AdminController extends Controller
         return view('admin.projeto.criar_projeto');
     }
 
+    public function salvarProjeto(Request $request){
+        print_r($request);
+    }
+
     public function editarProjeto(Request $request)
     {
         $this->checkADM();

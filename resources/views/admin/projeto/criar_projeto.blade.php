@@ -7,9 +7,8 @@
                 <div class="card">
                     <div class="card-header">Cadastrar Novo Projeto</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('projetos_store') }}">
+                        <form method="POST" action="{{ action('Admin\AdminController@salvarProjeto') }}">
                             @csrf
-
                             <h3>Projeto: </h3>
 
                             <div class="form-group row">

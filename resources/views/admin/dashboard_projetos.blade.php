@@ -55,8 +55,8 @@
             </tbody>
         </table>
 
-{{--        <a href="{{ route('projetos_create') }}"--}}
-{{--           class="btn btn-primary btn-lg active"--}}
-{{--           role="button" aria-pressed="true">Criar Projeto</a>--}}
+            <a href="{{ action('Admin\AdminController@createProjeto') }}"
+                class="btn btn-primary btn-lg active"
+                role="button" aria-pressed="true">Criar Projeto</a>
     </div>
 @endsection

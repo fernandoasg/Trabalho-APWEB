@@ -31,15 +31,21 @@ Route::resource('post', 'Post\PostController', ['except' => 'index']);
 
 /* ---------------------------------------- ABOUT ---------------------------------------- */
 Route::view('/sobre', 'sobre')->name('sobre');
-//Route::view('/contato', 'contato')->name('contato');
 Route::get('/contato', 'Contato\ContatoController@index');
 
 /* ---------------------------------------- ADMIN E EDITOR ---------------------------------------- */
 Route::get('/admin', 'Admin\AdminController@index')->name('admin_area');
 
 Route::get('/admin/ledes', 'Admin\AdminController@showLedes')->name('dashboard_ledes');
+
+
 Route::get('/admin/usuarios', 'Admin\AdminController@showUsers')->name('dashboard_users');
+
+
 Route::get('/admin/projetos', 'Admin\AdminController@showProjetos')->name('dashboard_projetos');
+Route::get('project_create', ['uses' => 'Admin\AdminController@createProjeto']);
+Route::post('/salvar_projeto', 'Admin\AdminController@salvarProjeto');
+
 Route::get('/editor/noticias', 'Admin\AdminController@showNoticias')->name('dashboard_noticias');
 
 //alterar nome
