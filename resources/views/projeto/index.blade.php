@@ -46,7 +46,7 @@
 
             <div class="d-flex">
                 @foreach($membros as $membro)
-                    <div class="card mx-1 p-2">
+                    <div class="card mx-1 p-2" style="width: 260px">
                         <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm7TzNAEPNDgeNNBZBiyYaVK34kpXYBV6CjgIHUtCkpyL6oyqW"
                             class="card-img-top" alt="...">
