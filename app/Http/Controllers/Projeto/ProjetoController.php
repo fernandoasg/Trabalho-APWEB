@@ -12,7 +12,7 @@ class ProjetoController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['edit', 'update']);
+        $this->middleware('auth')->only(['create', 'update']);
     }
 
     public function index()
@@ -30,7 +30,8 @@ class ProjetoController extends Controller
 
     public function edit($id)
     {
-
+        $projeto = Projeto::find($id);
+        return view('projeto.edit')->with(compact('projeto'));
     }
 
     public function update(Request $request)
@@ -62,18 +63,26 @@ class ProjetoController extends Controller
         return redirect('/admin/projetos');
     }
 
-    protected function create(array $data)
+    protected function create()
     {
-        return Projeto::create([
-            'nome' => $data['nome'],
-            'descricao' => $data['descricao'],
-            'data_inicio' => $data['data_inicio'],
-            'data_fim' => $data['data_fim']
-        ]);
+        return view('projeto.create')->with(compact('projeto')); 
     }
 
     public function store(Request $request)
     {
+
+        $data = $request->validate([
+            'nome' => ['required'],
+            'descricao' => ['required'],
+            'data_inicio' => ['required'],
+            'data_fim' => ['']
+        ]);
+
+
+        Projeto::create($data);
+
+        return redirect('/admin/projetos');
+
     }
 
 }
