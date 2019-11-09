@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Membro extends Model
 {
-
     public $timestamps = false;
 
     protected $fillable = ['data_entrada', 'data_saida', 'projeto_id', 'pessoa_id'];

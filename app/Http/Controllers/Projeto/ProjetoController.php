@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Projeto;
 
-use App\Models\Pessoa;
 use App\Models\Projeto\Membro;
 use App\Models\Projeto\Projeto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
 class ProjetoController extends Controller
 {
