@@ -27,7 +27,7 @@
                     <td id="buttons-collumn">
 
                         <span class="btn btn-primary btn-sm active">
-                            <form action="/projetos/edit" method="POST">
+                            <form action="{{ route('projeto.edit', $projeto->id) }}" method="POST">
                                 @method('GET')
                                 @csrf
                                     <input type='hidden' name='id' value='{{$projeto->id}}'>
@@ -39,7 +39,7 @@
                         </span>
 
                         <span class="btn btn-primary btn-sm active">
-                            <form action="/projetos/destroy" method="POST">
+                            <form action="{{route('projeto.destroy', $projeto->id)}}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <input type='hidden' name='id' value='{{$projeto->id}}'>
@@ -55,7 +55,7 @@
             </tbody>
         </table>
 
-            <a href="{{ action('Admin\AdminController@createProjeto') }}"
+            <a href="{{ route('projeto.create')}}"
                 class="btn btn-primary btn-lg active"
                 role="button" aria-pressed="true">Criar Projeto</a>
     </div>
