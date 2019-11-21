@@ -15,10 +15,10 @@
                             class="img-fluid">
                     </a>
                     <div class="flex-row">
-                        <span>Inicio: {{date("m/d/Y", strtotime($projeto->data_inicio))}}</span>
+                        <span>Inicio: {{date("d/m/Y", strtotime($projeto->data_inicio))}}</span>
                     </div>
                     <div class="flex-row">
-                        <span>Fim: {{date("m/d/Y", strtotime($projeto->data_fim)) ?? ''}}</span>
+                        <span>Fim: {{date("d/m/Y", strtotime($projeto->data_fim)) ?? ''}}</span>
                     </div>
                     <div class="mt-3">
                         <p>{{$projeto->descricao}}</p>

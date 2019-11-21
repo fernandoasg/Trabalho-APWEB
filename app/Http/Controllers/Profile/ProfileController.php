@@ -155,15 +155,12 @@ class ProfileController extends Controller
                     'numero' => ['string', 'max:10', 'nullable']
                 ]);
 
-
-                $validatedData = array_merge($validatedData, $validatedEndereco);
-
                 if (isset($user->pessoa->endereco))
                     $endereco = Endereco::where('pessoa_id', $pessoa->id)->first();
                 else
                     $endereco = new Endereco();
 
-                $endereco->fill($validatedData);
+                $endereco->fill($validatedEndereco);
                 $endereco->pessoa_id = $pessoa->id;
                 $endereco->save();
 

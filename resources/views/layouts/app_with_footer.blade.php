@@ -45,12 +45,6 @@
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item center-link">
-                        <a class="nav-link" href="#">Sigfap</a>
-                    </li>
-                    <li class="nav-item center-link">
-                        <a class="nav-link" href="#">Redmine</a>
-                    </li>
-                    <li class="nav-item center-link">
                         <a class="nav-link" href="{{ url('/projetos') }}">Projetos</a>
                     </li>
                     <li class="nav-item center-link">

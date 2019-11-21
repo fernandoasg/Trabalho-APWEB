@@ -6,7 +6,6 @@
 
 @push('scripts')
     <script type="text/javascript" src="{{ asset('js/admin/dashboard_users.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
 
 @section('content')
@@ -54,6 +53,9 @@
 
                         <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary btn-sm active my-1"
                            role="button" aria-pressed="true"><i class="fas fa-cog"></i></a>
+
+                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-sm active my-1"
+                           role="button" aria-pressed="true"><i class="fas fa-user-tag"></i></a>
 
                         <span class="btn btn-primary btn-sm active"
                               role="button" aria-pressed="true"

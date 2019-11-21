@@ -6,8 +6,11 @@ Route::redirect('/', '/home');
 Route::view('/home', 'home')->name('home');
 
 /* ---------------------------------------- AJAX ---------------------------------------- */
-Route::post('/ajax_cidades','Endereco\AjaxController@getCidades');
-Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
+Route::post('/ajax_cidades', 'Endereco\AjaxController@getCidades');
+Route::post('/ajax_estado_cidade', 'Endereco\AjaxController@getEstadoCidade');
+
+Route::post('/ajax/user/removeRole', 'User\AjaxController@removeRole');
+Route::post('/ajax/user/removePermission', 'User\AjaxController@removePermission');
 
 /*
  *  | Index de resource               | GET|HEAD      | resource                    | resource.index    | App\Http\Controllers\resource\resourceController@index     | web                                             |
@@ -20,7 +23,11 @@ Route::post('/ajax_estado_cidade','Endereco\AjaxController@getEstadoCidade');
  */
 Route::resource('projeto', 'Projeto\ProjetoController');
 
-//Só pra usar url no plural
+Route::resource('user', 'User\UserController', [
+    'only' => ['edit', 'update']
+]);
+
+// Só pra usar url no plural
 Route::get('/projetos', 'Projeto\ProjetoController@index');
 
 Route::resource('profile', 'Profile\ProfileController', [
@@ -38,18 +45,10 @@ Route::get('/admin', 'Admin\AdminController@index')->name('admin_area');
 
 Route::get('/admin/ledes', 'Admin\AdminController@showLedes')->name('dashboard_ledes');
 
-
 Route::get('/admin/usuarios', 'Admin\AdminController@showUsers')->name('dashboard_users');
 
-
 Route::get('/admin/projetos', 'Admin\AdminController@showProjetos')->name('dashboard_projetos');
-Route::get('project_create', ['uses' => 'Admin\AdminController@createProjeto']);
-Route::post('/salvar_projeto', 'Admin\AdminController@salvarProjeto');
 
 Route::get('/editor/noticias', 'Admin\AdminController@showNoticias')->name('dashboard_noticias');
 
-//alterar nome
 Route::patch('/admin/ledes', 'Admin\AdminController@updateLedes')->name('atualizar_ledes');
-
-//ver essa merda
-Route::post('/contato', 'Contato\ContatoController@sendContactRequest')->name('enviar_contato');
