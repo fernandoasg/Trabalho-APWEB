@@ -4,6 +4,10 @@
     <link href="{{ asset('css/admin/dashboard_projetos.css') }}" rel="stylesheet">
 @endpush
 
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('js/admin/dashboard_projetos.js') }}"></script>
+@endpush
+
 @section('content')
     <div class="container">
         <div class="mb-4">
@@ -15,6 +19,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Descricao</th>
+                <th>Visibilidade</th>
                 <th></th>
             </tr>
             </thead>
@@ -23,7 +28,20 @@
                 <tr id="{{ 'tr_projeto_'.$projeto->id }}">
                     <td>{{ $projeto->id }}</td>
                     <td>{{ $projeto->nome }}</td>
-                    <td>{{ $projeto->descricao }}</td>
+                    <td>{{ substr($projeto->descricao, 0, 100)}}</td>
+                    @if(!$projeto->visibilidade)
+                        <td>
+                        <span class="py-1 px-2 rounded text-white"
+                              style="background-color: #5541c6; cursor:pointer;"
+                              onclick="changeVisibilidade(this, {{$projeto->id}});">Oculto</span>
+                        </td>
+                    @else
+                        <td>
+                            <span class="py-1 px-2 rounded text-white"
+                                  style="background-color: #007B5E; cursor:pointer;"
+                                  onclick="changeVisibilidade(this, {{$projeto->id}});">Visível</span>
+                        </td>
+                    @endif
                     <td id="buttons-collumn">
 
                         <span class="btn btn-primary btn-sm active">
@@ -55,8 +73,8 @@
             </tbody>
         </table>
 
-            <a href="{{ route('projeto.create')}}"
-                class="btn btn-primary btn-lg active"
-                role="button" aria-pressed="true">Criar Projeto</a>
+        <a href="{{ route('projeto.create')}}"
+           class="btn btn-primary btn-lg active"
+           role="button" aria-pressed="true">Criar Projeto</a>
     </div>
 @endsection

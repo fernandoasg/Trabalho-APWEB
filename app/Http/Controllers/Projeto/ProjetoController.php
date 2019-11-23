@@ -37,12 +37,14 @@ class ProjetoController extends Controller
     public function update(Request $request)
     {
 
+        $oculto = $request->has('oculto');
+
         $data = $request->validate([
             'id' => ['required'],
-            'nome' => ['required'],
+            'nome' => ['required', 'max:20', 'unique:projetos'],
             'descricao' => ['required'],
-            'data_inicio' => ['required'],
-            'data_fim' => ['']
+            'data_inicio' => ['required', 'date'],
+            'data_fim' => ['nullable', 'date', 'after:data_inicio'],
         ]);
 
         $projeto = Projeto::find($data['id']);
@@ -65,24 +67,20 @@ class ProjetoController extends Controller
 
     protected function create()
     {
-        //????????????????????????????????????????????????????????????????????
-        return view('projeto.create')->with(compact('projeto'));
+        return view('projeto.create');
     }
 
     public function store(Request $request)
     {
-
         $data = $request->validate([
-            'nome' => ['required'],
+            'nome' => ['required', 'max:20', 'unique:projetos'],
             'descricao' => ['required'],
-            'data_inicio' => ['required'],
-            'data_fim' => ['']
+            'data_inicio' => ['required', 'date'],
+            'data_fim' => ['nullable', 'date', 'after:data_inicio']
         ]);
 
         Projeto::create($data);
-
-        return redirect('/admin/projetos');
-
+        return redirect()->route('dashboard_projetos');
     }
 
 }

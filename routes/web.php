@@ -11,6 +11,10 @@ Route::post('/ajax_estado_cidade', 'Endereco\AjaxController@getEstadoCidade');
 
 Route::post('/ajax/user/removeRole', 'User\AjaxController@removeRole');
 Route::post('/ajax/user/removePermission', 'User\AjaxController@removePermission');
+Route::post('/ajax/user/addPermission', 'User\AjaxController@addPermission');
+Route::post('/ajax/user/addRole', 'User\AjaxController@addRole');
+
+Route::post('/ajax/projetos/setVisibilidade', 'Projeto\AjaxController@changeVisibilidade');
 
 /*
  *  | Index de resource               | GET|HEAD      | resource                    | resource.index    | App\Http\Controllers\resource\resourceController@index     | web                                             |

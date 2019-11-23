@@ -19,6 +19,7 @@ class CreateProjetosTable extends Migration
             $table->text('descricao');
             $table->date('data_inicio');
             $table->date('data_fim')->nullable();
+            $table->boolean('visibilidade')->default(true);
             $table->timestamps();
         });
     }

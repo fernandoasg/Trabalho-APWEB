@@ -31,9 +31,11 @@
                                 <label for="descricao" class="col-md-4 col-form-label text-md-right">Descrição</label>
 
                                 <div class="col-md-6">
-                                    <input id="descricao" 
-                                           class="form-control @error('descricao') is-invalid @enderror" name="descricao"
-                                           value="{{ old('descricao') }}" rows="5" required autocomplete="descricao"></textarea>
+                                    <textarea id="descricao"
+                                              class="form-control"
+                                              name="descricao"
+                                              rows="5"
+                                              required>{{ old('descricao') }}</textarea>
 
                                     @error('descricao')
                                     <span class="invalid-feedback" role="alert">
@@ -44,12 +46,15 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="data_inicio" class="col-md-4 col-form-label text-md-right">Data de Inicio</label>
+                                <label for="data_inicio" class="col-md-4 col-form-label text-md-right">Data de
+                                    Inicio</label>
 
                                 <div class="col-md-6">
                                     <input id="data_inicio" type="date"
-                                           class="form-control @error('data_inicio') is-invalid @enderror" name="data_inicio"
-                                           value="{{ old('data_inicio') }}" required autocomplete="data_inicio" autofocus>
+                                           class="form-control @error('data_inicio') is-invalid @enderror"
+                                           name="data_inicio"
+                                           value="{{ old('data_inicio') }}" required autocomplete="data_inicio"
+                                           autofocus>
 
                                     @error('data_inicio')
                                     <span class="invalid-feedback" role="alert">
@@ -75,7 +80,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
