@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Projeto;
 
 use App\Models\Projeto\Membro;
 use App\Models\Projeto\Projeto;
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PessoasSeeder;
 
 class ProjetoController extends Controller
 {
@@ -67,7 +69,8 @@ class ProjetoController extends Controller
 
     protected function create()
     {
-        return view('projeto.create');
+        $pessoas = Pessoa::all();
+        return view('projeto.create')->with(compact('pessoas'));
     }
 
     public function store(Request $request)
