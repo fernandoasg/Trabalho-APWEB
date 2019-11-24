@@ -7,48 +7,56 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <a href="{{ url('/noticia/1') }}">
-                    <img
-                        src="https://drauziovarella.uol.com.br/wp-content/uploads/2017/07/drauzio-thumb-comenta-relogio-biologico-invertido-1000x563.jpg"
-                        alt="Explicação sobre a imagem" class="img-fluid">
-                    <div class="mb-5 d-inline p-1 bg-primary news-info zindex-1">
-                        <span class="text-white">04 de setembro de 2019</span>
-                    </div>
-                    <div class="pl-1 pt-1 pr-1 bg-secondary news-info">
-                        <h3 class="pt-3 text-white">Relógio Biológico, não quebre o seu!</h3>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-4">
-                <div class="m-1">
-                    <a href="{{ url('/noticia/2') }}">
-                        <img
-                            src="https://drauziovarella.uol.com.br/wp-content/uploads/2017/07/drauzio-thumb-comenta-relogio-biologico-invertido-1000x563.jpg"
-                            alt="Explicação sobre a imagem" class="img-fluid">
-                        <div class="mb-5 d-inline p-1 bg-primary news-info-mid zindex-1">
-                            <small class="text-white">04 de setembro de 2019</small>
+            <div class="col-lg-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner text-center">
+                        <div class="carousel-item active">
+                                <a href="{{ url('/noticia/1') }}">
+                                    <img
+                                        src="https://drauziovarella.uol.com.br/wp-content/uploads/2017/07/drauzio-thumb-comenta-relogio-biologico-invertido-1000x563.jpg"
+                                        alt="Explicação sobre a imagem" class="img-fluid">
+                                </a>
+                                <a href="{{ url('/noticia/1') }}">
+                                    <div class="mt-3">
+                                        <h2 class="text-dark">Relógio Biológico, não quebre o seu!</h2>
+                                    </div>
+                                </a>
                         </div>
-                        <div class="pl-1 pt-1 pr-1 bg-secondary news-info-mid">
-                            <h6 class="pt-2 text-white">Relógio Biológico, não quebre o seu!</h6>
+                        <div class="carousel-item">
+                                <a href="{{ url('/noticia/2') }}">
+                                    <img
+                                        src="https://drauziovarella.uol.com.br/wp-content/uploads/2017/07/drauzio-thumb-comenta-relogio-biologico-invertido-1000x563.jpg"
+                                        alt="Explicação sobre a imagem" class="img-fluid">
+                                </a>
+                                <a href="{{ url('/noticia/2') }}">
+                                    <div class="mt-3">
+                                        <h2 class="text-dark">Relógio Biológico, não quebre o seu!</h2>
+                                    </div>
+                                </a>
                         </div>
+                        <div class="carousel-item">
+                                <a href="{{ url('/noticia/3') }}">
+                                    <img
+                                        src="https://drauziovarella.uol.com.br/wp-content/uploads/2017/07/drauzio-thumb-comenta-relogio-biologico-invertido-1000x563.jpg"
+                                        alt="Explicação sobre a imagem" class="img-fluid">
+                                </a>
+                                <a href="{{ url('/noticia/3') }}">
+                                    <div class="mt-3">
+                                        <h2 class="text-dark">Relógio Biológico, não quebre o seu!</h2>
+                                    </div>
+                                </a>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
                     </a>
                 </div>
-                <div class="m-1">
-                    <a href="{{ url('/noticia/3') }}">
-                        <img
-                            src="https://drauziovarella.uol.com.br/wp-content/uploads/2017/07/drauzio-thumb-comenta-relogio-biologico-invertido-1000x563.jpg"
-                            alt="Explicação sobre a imagem" class="img-fluid">
-                        <div class="mb-5 d-inline p-1 bg-primary news-info zindex-1">
-                            <small class="text-white">04 de setembro de 2019</small>
-                        </div>
-                        <div class="pl-1 pt-1 pr-1 bg-secondary news-info">
-                            <h6 class="pt-2 text-white">Relógio Biológico, não quebre o seu!</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            </div>    
         </div>
 
         <div class="row mt-5">
