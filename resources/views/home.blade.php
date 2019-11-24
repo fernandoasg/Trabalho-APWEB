@@ -78,7 +78,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-5">
             <div class="col-md-4">
                 <a href="{{ url('/noticia/5') }}">
                     <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-5">
             <div class="col-md-4">
                 <a href="{{ url('/noticia/6') }}">
                     <img src="https://siai.ufms.br/img/logoLedes.png" class="img-fluid">
@@ -116,7 +116,7 @@
             </div>
         </div>
 
-        <div class="col-md-12 text-center mt-4">
+        <div class="col-md-12 text-center mt-5 mb-3">
             <a href="{{ url('/noticias') }}" class="btn btn-primary center-block">Ver mais notícias</a>
         </div>
     </div>

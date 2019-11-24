@@ -29,10 +29,12 @@
                         <i class="fas fa-envelope fa-fw mr-1"></i>
                         <span>{{ $dados_ledes->email }}</span>
                     </li>
-                </ul>
-                <iframe id="map" class="w-100"
+                </ul>     
+            </div>
+            <div class="mt-3 embed-responsive embed-responsive-16by9">
+                <iframe id="map" class="embed-responsive-item"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14948.368916475332!2d-54.613378!3d-20.5024451!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6d7d288192cb4db3!2sLaborat%C3%B3rio%20de%20Engenharia%20de%20Software%20-%20LEDES!5e0!3m2!1spt-BR!2sbr!4v1570375952642!5m2!1spt-BR!2sbr"
-                    style="border:0;" allowfullscreen="">
+                    style="border:0;" allowfullscreen>
                 </iframe>
             </div>
 {{--            <div class="col-sm-12 col-md-7 my-3">--}}
