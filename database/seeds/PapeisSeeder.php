@@ -46,5 +46,47 @@ class PapeisSeeder extends Seeder
         $papel->data_inicio = '2016-01-22';
         $papel->data_fim = '2016-07-01';
         $papel->save();
+
+        $papel = new Papel();
+        $papel->funcao = 'Analista';
+        $papel->descricao = 'Analista blablablablablabla';
+        $papel->data_inicio = '2016-01-22';
+        $papel->data_fim = '2016-07-01';
+        $papel->save();
+
+        $papel = new Papel();
+        $papel->funcao = 'Coordenador de Projeto';
+        $papel->descricao = 'Coordenador de Projeto blablablablablabla';
+        $papel->data_inicio = '2016-01-22';
+        $papel->data_fim = '2016-07-01';
+        $papel->save();
+
+        $papel = new Papel();
+        $papel->funcao = 'Desenvolvedor';
+        $papel->descricao = 'Desenvolvedor blablablablablabla';
+        $papel->data_inicio = '2016-01-22';
+        $papel->data_fim = '2016-07-01';
+        $papel->save();
+
+        $papel = new Papel();
+        $papel->funcao = 'Documentador';
+        $papel->descricao = 'Documentador blablablablablabla';
+        $papel->data_inicio = '2016-01-22';
+        $papel->data_fim = '2016-07-01';
+        $papel->save();
+
+        $papel = new Papel();
+        $papel->funcao = 'Gerente de Projetos';
+        $papel->descricao = 'Gerente de Projetos blablablablablabla';
+        $papel->data_inicio = '2016-01-22';
+        $papel->data_fim = '2016-07-01';
+        $papel->save();
+
+        $papel = new Papel();
+        $papel->funcao = 'Tester';
+        $papel->descricao = 'Tester blablablablablabla';
+        $papel->data_inicio = '2016-01-22';
+        $papel->data_fim = '2016-07-01';
+        $papel->save();
     }
 }

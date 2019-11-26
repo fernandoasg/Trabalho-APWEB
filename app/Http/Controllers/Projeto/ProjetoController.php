@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Projeto;
 
 use App\Models\Projeto\Membro;
 use App\Models\Projeto\Projeto;
+use App\Models\Projeto\Papel;
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -82,9 +83,34 @@ class ProjetoController extends Controller
             'data_fim' => ['nullable', 'date', 'after:data_inicio']
         ]);
 
-        Projeto::create($data);
+        $arrayIdPessoa = array(); // Tem os ids dos membros
+        $arrayFuncao = array(); // Tem os nomes das funções
+        $i = 0;
+        while($request->exists('member'.$i)){
+            $IdEFuncao = $request->get('member'.$i);
+            $pos = strpos($IdEFuncao, '-');
+            $string = substr($IdEFuncao, 0, $pos);
+            array_push($arrayIdPessoa, $string);
+            $string = substr($IdEFuncao, $pos+1);
+            array_push($arrayFuncao, $string);
+            $i += 1;
+        }
+
+        $projeto = Projeto::create($data);
+
+        for ($i = 0; $i < count($arrayIdPessoa); $i++) {
+            $membro = new Membro();
+            $membro->data_entrada = $projeto->data_inicio;
+            $membro->data_saida = '2333-07-01';
+            $membro->projeto_id = $projeto->id;
+            $membro->pessoa_id = $arrayIdPessoa[$i];
+            $membro->save();
+
+            //lista papeis no select lá
+            //pega id do papel
+            // Criar see membro papel
+        }       
+
         return redirect()->route('dashboard_projetos');
     }
-
 }
-

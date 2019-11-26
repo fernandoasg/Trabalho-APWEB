@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\Pessoa;
 use App\Models\Post;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
