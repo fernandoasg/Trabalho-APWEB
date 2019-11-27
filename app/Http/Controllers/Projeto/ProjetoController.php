@@ -8,6 +8,7 @@ use App\Models\Projeto\Papel;
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Projeto\MembroPapel;
 use PessoasSeeder;
 
 class ProjetoController extends Controller
@@ -71,7 +72,8 @@ class ProjetoController extends Controller
     protected function create()
     {
         $pessoas = Pessoa::all();
-        return view('projeto.create')->with(compact('pessoas'));
+        $papeis = Papel::all();
+        return view('projeto.create')->with(compact('pessoas', 'papeis'));
     }
 
     public function store(Request $request)
@@ -84,15 +86,15 @@ class ProjetoController extends Controller
         ]);
 
         $arrayIdPessoa = array(); // Tem os ids dos membros
-        $arrayFuncao = array(); // Tem os nomes das funções
+        $arrayIdPapel = array(); // Tem os nomes das funções
         $i = 0;
         while($request->exists('member'.$i)){
             $IdEFuncao = $request->get('member'.$i);
             $pos = strpos($IdEFuncao, '-');
             $string = substr($IdEFuncao, 0, $pos);
             array_push($arrayIdPessoa, $string);
-            $string = substr($IdEFuncao, $pos+1);
-            array_push($arrayFuncao, $string);
+            $string = substr($IdEFuncao, $pos+1);        
+            array_push($arrayIdPapel, $string);
             $i += 1;
         }
 
@@ -106,10 +108,11 @@ class ProjetoController extends Controller
             $membro->pessoa_id = $arrayIdPessoa[$i];
             $membro->save();
 
-            //lista papeis no select lá
-            //pega id do papel
-            // Criar see membro papel
-        }       
+            $membroPapel = new MembroPapel();
+            $membroPapel->papel_id = $arrayIdPapel[$i];
+            $membroPapel->membro_id = $arrayIdPessoa[$i];
+            $membroPapel->save();
+        }      
 
         return redirect()->route('dashboard_projetos');
     }

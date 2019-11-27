@@ -1,4 +1,20 @@
 
+var papeisDisponiveis = []
+var idDosPapeis = []
+
+$(document).ready(function(){
+     var elementodefuncoes = document.getElementsByClassName('possivel-funcao')
+     console.log(elementodefuncoes.length)
+
+     for( var i = 0; i < elementodefuncoes.length; i++){
+          var idPapel = elementodefuncoes[i].id.replace("possivel", "")
+          var papel = $('input#possivel'+idPapel).val()
+          papeisDisponiveis[i] = papel
+          idDosPapeis[i] = idPapel
+          console.log(idPapel + "  " + papel)
+     }
+});
+
 $(function () {
      $('.dropdown-toggle').dropdown();
    });
@@ -22,7 +38,12 @@ function deleteUser() {
      var content = "";
      for(i = 0; i < pessoasSelecionadas.length; i++){
           var id = pessoasSelecionadas[i].replace("checkBox", "");
-          content += "<input class='membro"+id+"' id='member"+id+"' name='member"+i+"' type='hidden' value='"+id+"-Analista'><div class='col-md-5 mt-2 text-right membro"+id+"'>"+nomes[i]+"</div><div class='col-md-4 mt-1 membro"+id+"'><select id='cargo"+id+"' name='cargo' class='form-control' onchange='trocaFuncao(this.id);'><option selected>Analista</option><option>Coordenador do Projeto</option><option>Desenvolvedor</option><option>Documentador</option><option>Gerente de Projetos</option><option>Suporte</option><option>Tester</option></select></div></div><div  class='col-md-1 text-center mt-2 membro"+id+"'><a id='membro"+id+"' class='btn' onclick='removeMembro(this.id);'><i class='fa fa-close'></i></a></div>";
+          content += "<input class='membro"+id+"' id='member"+id+"' name='member"+i+"' type='hidden' value='"+id+"-"+idDosPapeis[0]+"'><div class='col-md-5 mt-2 text-right membro"+id+"'>"+nomes[i]+"</div><div class='col-md-4 mt-1 membro"+id+"'><select id='cargo"+id+"' name='cargo' class='form-control' onchange='trocaFuncao(this.id);'>" 
+          content += "<option selected>"+papeisDisponiveis[0]+"</option>";
+          for( var j = 1; j < papeisDisponiveis.length; j++){
+               content += "<option>"+papeisDisponiveis[j]+"</option>";
+          }
+          content += "</select></div></div><div  class='col-md-1 text-center mt-2 membro"+id+"'><a id='membro"+id+"' class='btn' onclick='removeMembro(this.id);'><i class='fa fa-close'></i></a></div>";
      }
 
      whereToAppend.append(content)
@@ -43,6 +64,14 @@ function deleteUser() {
      var numId = id.replace("cargo", "")
 
      var index = $('#member'+numId).attr("name").replace("member", "")
+     var papelId = 0;
 
-     $('input#member'+numId).val(index+"-"+funcao)
+     for(var i =0; i < papeisDisponiveis.length; i++){
+          if(papeisDisponiveis[i] === funcao){
+               papelId = idDosPapeis[i]
+               break;
+          }
+     }
+     console.log(numId+"-"+papelId)
+     $('input#member'+numId).val(numId+"-"+papelId)
  }

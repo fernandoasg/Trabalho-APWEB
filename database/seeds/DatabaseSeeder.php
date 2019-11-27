@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
         Artisan::call('db:seed', array('--class' => 'RolesPermissionsSeeder'));
         Artisan::call('db:seed', array('--class' => 'UserSeeder'));
         Artisan::call('db:seed', array('--class' => 'PostSeeder'));
-        //Artisan::call('db:seed', array('--class' => 'MembroPapelSeeder'));
+        Artisan::call('db:seed', array('--class' => 'MembroPapelsSeeder'));
 
-        DB::insert("INSERT INTO membro_papel (papel_id, membro_id) VALUES (1,1), (2,1), (3,2), (4,3), (5,4);");
+        //DB::insert("INSERT INTO membro_papeis (papel_id, membro_id) VALUES (1,1), (2,1), (3,2), (4,3), (5,4);");
 
     }
 }

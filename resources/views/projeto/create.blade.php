@@ -104,6 +104,12 @@
                     </div>
                 </div>
 
+                <div>
+                        @foreach($papeis as $papel)
+                            <input class="possivel-funcao" id="possivel{{$papel->id}}" name='member"+i+"' type='hidden' value="{{$papel->funcao}}">
+                        @endforeach
+                </div>
+
                 <!-- Modal Add Membros -->
                 <div class="modal fade" id="modalAddMembros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
