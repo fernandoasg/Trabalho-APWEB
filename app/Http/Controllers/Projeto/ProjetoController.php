@@ -9,7 +9,6 @@ use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Projeto\MembroPapel;
-use PessoasSeeder;
 
 class ProjetoController extends Controller
 {

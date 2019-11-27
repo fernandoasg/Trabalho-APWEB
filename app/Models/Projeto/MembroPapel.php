@@ -4,8 +4,9 @@ namespace App\Models\Projeto;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MembroPapels extends Model
+class MembroPapel extends Model
 {
+    protected $table = 'membro_papel';
 
     public $timestamps = false;
 

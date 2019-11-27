@@ -13,7 +13,7 @@ class CreateMembroPapelTable extends Migration
      */
     public function up()
     {
-        Schema::create('membro_papels', function (Blueprint $table) {
+        Schema::create('membro_papel', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('papel_id');
@@ -31,6 +31,6 @@ class CreateMembroPapelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membro_papels');
+        Schema::dropIfExists('membro_papel');
     }
 }
