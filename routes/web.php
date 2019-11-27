@@ -3,7 +3,8 @@
 Auth::routes();
 
 Route::redirect('/', '/home');
-Route::view('/home', 'home')->name('home');
+//Route::view('/home', 'home')->name('home');
+Route::resource('/home', 'Post\PostController');
 
 /* ---------------------------------------- AJAX ---------------------------------------- */
 Route::post('/ajax_cidades', 'Endereco\AjaxController@getCidades');

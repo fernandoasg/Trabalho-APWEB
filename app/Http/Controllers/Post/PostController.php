@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
 
+    public function index()
+    {
+        $posts = Post::orderBy('id', 'DESC')->get();
+        return view('home')->with(compact('posts'));
+    }
+
     public function create()
     {
         //

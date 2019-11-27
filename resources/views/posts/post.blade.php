@@ -5,9 +5,9 @@
         <div class="align-self-center" id="post-wrapper">
             <div class="mb-2" id="tipo-post">
                 <span>Nóticias . </span>
-                <span>{{ $post->created_at->format('d F Y') }}</span>
+                <span>{{ $posts->created_at->format('d F Y') }}</span>
             </div>
-            <h1 class="font-weight-bold">{{ $post->title }}</h1>
+            <h1 class="font-weight-bold">{{ $posts->title }}</h1>
             <div class="">
                 <span>Postado por: {{ $autor->nome_completo }}</span>
                 <a href="#" class="fb-ic ml-5" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
@@ -15,13 +15,13 @@
 
             </div>
             <div class="mt-4">
-                <p class="text-justify">{{ $post->intro }}</p>
+                <p class="text-justify">{{ $posts->intro }}</p>
             </div>
             <div class="mt-4">
-                <p class="text-justify">{{ $post->body }}</p>
+                <p class="text-justify">{{ $posts->body }}</p>
             </div>
             <div class="mt-4">
-                <p class="text-justify">{{ $post->conclusion }}</p>
+                <p class="text-justify">{{ $posts->conclusion }}</p>
             </div>
 
         </div>
