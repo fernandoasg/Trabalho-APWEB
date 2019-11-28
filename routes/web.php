@@ -56,3 +56,5 @@ Route::get('/admin/projetos', 'Admin\AdminController@showProjetos')->name('dashb
 Route::get('/editor/noticias', 'Admin\AdminController@showNoticias')->name('dashboard_noticias');
 
 Route::patch('/admin/ledes', 'Admin\AdminController@updateLedes')->name('atualizar_ledes');
+
+Route::resource('noticias', 'NoticiaController');
